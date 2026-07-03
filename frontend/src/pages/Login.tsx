@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useResolve } from '../ResolveContext';
 import type { UserRole } from '../ResolveContext';
+import { login as apiLogin } from '../lib/api';
 import { Sparkles, Shield, RefreshCw, Lock, Mail, CheckCircle2 } from 'lucide-react';
 
 export const Login: React.FC = () => {
-  const { setCurrentUserRole } = useResolve();
+  const { setCurrentUserRole, setCurrentUserProfile } = useResolve();
   const navigate = useNavigate();
 
   const [role, setRole] = useState<UserRole>('Employee');
@@ -28,21 +29,26 @@ export const Login: React.FC = () => {
     setPassword('password');
   };
 
-  const handleLoginSubmit = (e: React.FormEvent) => {
+  const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    setTimeout(() => {
-      setLoading(false);
-      setCurrentUserRole(role);
+    try {
+      const result = await apiLogin(employeeId, password);
+      setCurrentUserRole(result.user.role);
+      setCurrentUserProfile(result.user);
 
-      // Redirect depending on role
-      if (role === 'Employee') navigate('/employee/dashboard');
-      else if (role === 'Manager') navigate('/manager/dashboard');
-      else if (role === 'CTO') navigate('/cto/dashboard');
-      else if (role === 'COO') navigate('/coo/dashboard');
-      else if (role === 'CEO') navigate('/ceo/dashboard');
-    }, 800);
+      if (result.user.role === 'Employee') navigate('/employee/dashboard');
+      else if (result.user.role === 'Manager') navigate('/manager/dashboard');
+      else if (result.user.role === 'CTO') navigate('/cto/dashboard');
+      else if (result.user.role === 'COO') navigate('/coo/dashboard');
+      else if (result.user.role === 'CEO') navigate('/ceo/dashboard');
+    } catch (error) {
+      console.error(error);
+      alert(error instanceof Error ? error.message : 'Login failed');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
