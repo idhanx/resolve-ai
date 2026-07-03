@@ -287,22 +287,22 @@ const EmployeeEngagement: React.FC = () => {
     setSurveyStep(1);
   };
 
-  const handleFormSubmit = (e: React.FormEvent, type: 'Feedback' | 'Concern' | 'Suggestion') => {
+  const handleFormSubmit = async (e: React.FormEvent, type: 'Feedback' | 'Concern' | 'Suggestion') => {
     e.preventDefault();
-    const subId = addSubmission({
+    const subId = await addSubmission({
       type,
       title,
       description,
       expectedBenefits: type === 'Suggestion' ? benefits : undefined,
       department: dept,
       evidenceFiles: evidenceName ? [{ name: evidenceName, size: '2.4 MB', type: 'image/png' }] : []
-    });
+    } as any);
     setSuccessId(subId);
   };
 
-  const handleSurveySubmit = (e: React.FormEvent) => {
+  const handleSurveySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subId = addSubmission({
+    const subId = await addSubmission({
       type: 'Survey',
       title: 'Pulse Survey Feedback Submission',
       description: description || 'Regular Pulse Survey completed',

@@ -4,12 +4,20 @@ jspm_packages/
 web_modules/
 .vite/
 frontend/.vite/
+backend/.venv/
 
 # Build outputs
 dist/
 build/
 out/
 .next/
+backend.zip
+
+# Backend package scaffolding
+backend/Dockerfile
+backend/README.md
+backend/docker-compose.yml
+backend/requirements.txt
 
 # IDE and OS files
 .DS_Store
@@ -34,6 +42,14 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
 # Tooling
 .gemini/

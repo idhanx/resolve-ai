@@ -429,13 +429,13 @@ const ExecutiveReviewPage: React.FC = () => {
     }
   ];
 
-  const handleAssignAction = (e: React.FormEvent) => {
+  const handleAssignAction = async (e: React.FormEvent) => {
     e.preventDefault();
     if (selectedPlanIdx === null) return;
 
     const planTemplate = AI_PLAN_TEMPLATES[selectedPlanIdx];
 
-    assignActionPlan(
+    await assignActionPlan(
       sub.id,
       {
         id: `plan-${Math.floor(100 + Math.random() * 900)}`,

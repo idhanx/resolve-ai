@@ -1,4 +1,23 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import {
+  AUTH_TOKEN_KEY,
+  assignActionPlan as apiAssignActionPlan,
+  completeManagerAction as apiCompleteManagerAction,
+  createComplaint as apiCreateComplaint,
+  fetchCeoSubmissions,
+  fetchDeptManagers,
+  fetchDeptSubmissions,
+  fetchEmployeeComplaints,
+  fetchManagerActions,
+  getMe as apiFetchMe,
+  fetchNotifications as apiFetchNotifications,
+  fetchSurveys,
+  markNotificationsRead as apiMarkNotificationsRead,
+  submitSurvey as apiSubmitSurvey,
+  updateManagerAction as apiUpdateManagerAction,
+  verifyEmployeeComplaint as apiVerifyEmployeeComplaint,
+} from './lib/api';
+import type { ApiUser } from './lib/api';
 
 // Define Data Structures
 
@@ -102,17 +121,18 @@ interface ResolveContextType {
   currentUserAvatar: string;
   currentUserDept: 'Technology' | 'Operations';
   setCurrentUserRole: (role: UserRole) => void;
+  setCurrentUserProfile: (user: ApiUser) => void;
   submissions: Submission[];
   notifications: Notification[];
   managers: Manager[];
   employees: Employee[];
   surveyResponses: SurveyResponse[];
-  addSubmission: (submission: Omit<Submission, 'id' | 'date' | 'status' | 'aiCategory' | 'priority' | 'evidenceScore' | 'evidenceBreakdown' | 'intelligenceSummary' | 'confidence' | 'assignedExecutive' | 'actionPlan' | 'verification'>) => string;
-  assignActionPlan: (submissionId: string, actionPlan: Omit<ActionPlan, 'progress'>, managerId: string, priority: 'Low' | 'Medium' | 'High' | 'Critical', deadline: string, instructions: string) => void;
-  updateManagerActionProgress: (submissionId: string, checklist: ChecklistItem[], progress: number, notes?: string, file?: { name: string; url: string }) => void;
-  completeManagerAction: (submissionId: string, notes: string, file?: { name: string; url: string }) => void;
-  submitEmployeeVerification: (submissionId: string, rating: 'Yes' | 'Partially' | 'No', score: number, comments: string) => void;
-  markNotificationsAsRead: (role: UserRole) => void;
+  addSubmission: (submission: Omit<Submission, 'id' | 'date' | 'status' | 'aiCategory' | 'priority' | 'evidenceScore' | 'evidenceBreakdown' | 'intelligenceSummary' | 'confidence' | 'assignedExecutive' | 'actionPlan' | 'verification'>) => Promise<string>;
+  assignActionPlan: (submissionId: string, actionPlan: Omit<ActionPlan, 'progress'>, managerId: string, priority: 'Low' | 'Medium' | 'High' | 'Critical', deadline: string, instructions: string) => Promise<void>;
+  updateManagerActionProgress: (submissionId: string, checklist: ChecklistItem[], progress: number, notes?: string, file?: { name: string; url: string }) => Promise<void>;
+  completeManagerAction: (submissionId: string, notes: string, file?: { name: string; url: string }) => Promise<void>;
+  submitEmployeeVerification: (submissionId: string, rating: 'Yes' | 'Partially' | 'No', score: number, comments: string) => Promise<void>;
+  markNotificationsAsRead: (role: UserRole) => Promise<void>;
 }
 
 const ResolveContext = createContext<ResolveContextType | undefined>(undefined);
@@ -328,26 +348,226 @@ const INITIAL_SURVEYS: SurveyResponse[] = [
   { id: 's-4', date: '2026-06-28', ratings: { communication: 4, growth: 4, managerSupport: 5, environment: 4, recognition: 4, workLifeBalance: 4 }, comments: 'Great support from Sophia, she schedules 1on1s regularly.' }
 ];
 
+const mapDepartment = (department: string | null | undefined): 'Technology' | 'Operations' => {
+  return department === 'Operations' ? 'Operations' : 'Technology';
+};
+
+const mapStatus = (status: string): Submission['status'] => {
+  if (status === 'Resolved' || status === 'Verified' || status === 'In Progress' || status === 'Pending Review') {
+    return status;
+  }
+  return 'Pending Review';
+};
+
+const mapComplaint = (item: any): Submission => {
+  const actionPlanSource = item.action_plan || item.actionPlan || null;
+  const task = item.task;
+  const actionPlan = actionPlanSource
+    ? {
+        id: actionPlanSource.id || task?.id || item.id,
+        title: actionPlanSource.title || task?.title || item.title,
+        description: actionPlanSource.description || task?.description || '',
+        expectedImpact: actionPlanSource.expectedImpact || '',
+        estimatedTime: actionPlanSource.estimatedTime || '',
+        businessValue: actionPlanSource.businessValue || '',
+        instructions: actionPlanSource.instructions || task?.instructions,
+        deadline: actionPlanSource.deadline,
+        priority: actionPlanSource.priority || item.priority,
+        checklist: (actionPlanSource.checklist || task?.checklist || []).map((check: any, idx: number) => ({
+          id: check.id || `chk-${idx + 1}`,
+          text: check.text || check,
+          completed: Boolean(check.completed),
+        })),
+        proofUrl: actionPlanSource.proofUrl,
+        proofFileName: actionPlanSource.proofFileName,
+        progress: task?.progress ?? actionPlanSource.progress ?? 0,
+        completedAt: actionPlanSource.completedAt,
+        completionNotes: actionPlanSource.completionNotes,
+      }
+    : null;
+
+  return {
+    id: item.id,
+    type: item.complaint_type || 'Concern',
+    title: item.title,
+    description: item.description,
+    expectedBenefits: item.expected_benefits,
+    department: mapDepartment(item.department),
+    date: (item.created_at || new Date().toISOString()).split('T')[0],
+    status: mapStatus(item.status),
+    aiCategory: item.ai_category || 'General Organizational Wellness',
+    priority: item.priority || 'Medium',
+    evidenceScore: item.evidence_score ?? 0,
+    evidenceBreakdown: item.evidence_breakdown || [],
+    intelligenceSummary: item.intelligence_summary || '',
+    confidence: item.confidence ?? 0,
+    assignedExecutive: (item.assigned_executive || 'CTO') as 'CTO' | 'COO',
+    assignedManagerId: item.assigned_manager_id || undefined,
+    actionPlan,
+    verification: item.verification
+      ? {
+          improvementRating: item.verification.improvement_rating || item.verification.improvementRating || 'Yes',
+          comments: item.verification.comments || '',
+          score: item.verification.score || 0,
+          date: item.verification.date || (item.verification.created_at || '').split('T')[0],
+        }
+      : null,
+    evidenceFiles: item.evidence_files || [],
+  };
+};
+
+const mapNotification = (item: any): Notification => ({
+  id: item.id,
+  title: item.title,
+  message: item.message,
+  time: item.created_at ? new Date(item.created_at).toLocaleString() : 'Just now',
+  read: Boolean(item.read),
+  role: item.role as UserRole,
+  targetPath: item.target_path,
+});
+
+const mapSurvey = (item: any): SurveyResponse => ({
+  id: item.id,
+  date: (item.created_at || new Date().toISOString()).split('T')[0],
+  ratings: item.ratings,
+  comments: item.comments || '',
+});
+
 export const ResolveProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Global State
   const [currentUserRole, setCurrentUserRoleState] = useState<UserRole>(() => {
     return (localStorage.getItem('resolve_role') as UserRole) || 'Employee';
   });
-  
-  const [submissions, setSubmissions] = useState<Submission[]>(() => {
-    const saved = localStorage.getItem('resolve_submissions');
-    return saved ? JSON.parse(saved) : INITIAL_SUBMISSIONS;
-  });
+  const [currentUserId, setCurrentUserId] = useState('emp-1');
+  const [currentUserName, setCurrentUserName] = useState('Sarah Chen');
+  const [currentUserAvatar, setCurrentUserAvatar] = useState('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150');
+  const [currentUserDept, setCurrentUserDept] = useState<'Technology' | 'Operations'>('Technology');
+  const [submissions, setSubmissions] = useState<Submission[]>(INITIAL_SUBMISSIONS);
+  const [notifications, setNotifications] = useState<Notification[]>(INITIAL_NOTIFICATIONS);
+  const [surveyResponses, setSurveyResponses] = useState<SurveyResponse[]>(INITIAL_SURVEYS);
+  const [managers, setManagers] = useState<Manager[]>(INITIAL_MANAGERS);
 
-  const [notifications, setNotifications] = useState<Notification[]>(() => {
-    const saved = localStorage.getItem('resolve_notifications');
-    return saved ? JSON.parse(saved) : INITIAL_NOTIFICATIONS;
-  });
+  const applyRoleFallbackProfile = (role: UserRole) => {
+    switch (role) {
+      case 'Manager':
+        setCurrentUserId('mgr-1');
+        setCurrentUserName('Sophia Rodriguez');
+        setCurrentUserAvatar('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150');
+        setCurrentUserDept('Technology');
+        break;
+      case 'CTO':
+        setCurrentUserId('exec-cto');
+        setCurrentUserName('Dr. Aris Thorne');
+        setCurrentUserAvatar('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150');
+        setCurrentUserDept('Technology');
+        break;
+      case 'COO':
+        setCurrentUserId('exec-coo');
+        setCurrentUserName('Marcus Sterling');
+        setCurrentUserAvatar('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150');
+        setCurrentUserDept('Operations');
+        break;
+      case 'CEO':
+        setCurrentUserId('exec-ceo');
+        setCurrentUserName('Victoria Vance');
+        setCurrentUserAvatar('https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150');
+        setCurrentUserDept('Technology');
+        break;
+      default:
+        setCurrentUserId('emp-1');
+        setCurrentUserName('Sarah Chen');
+        setCurrentUserAvatar('https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150');
+        setCurrentUserDept('Technology');
+        break;
+    }
+  };
 
-  const [surveyResponses, setSurveyResponses] = useState<SurveyResponse[]>(() => {
-    const saved = localStorage.getItem('resolve_surveys');
-    return saved ? JSON.parse(saved) : INITIAL_SURVEYS;
-  });
+  const setCurrentUserRole = (role: UserRole) => {
+    setCurrentUserRoleState(role);
+    localStorage.setItem('resolve_role', role);
+    applyRoleFallbackProfile(role);
+  };
+
+  const setCurrentUserProfile = (user: ApiUser) => {
+    setCurrentUserRoleState(user.role);
+    setCurrentUserId(user.employee_id);
+    setCurrentUserName(user.name);
+    setCurrentUserAvatar(user.avatar_url || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150');
+    setCurrentUserDept(mapDepartment(user.department));
+    localStorage.setItem('resolve_role', user.role);
+  };
+
+  useEffect(() => {
+    let active = true;
+
+    const hydrate = async () => {
+      const token = localStorage.getItem(AUTH_TOKEN_KEY);
+      if (!token) {
+        return;
+      }
+
+      try {
+        const me = await apiFetchMe();
+        if (!active) {
+          return;
+        }
+
+        setCurrentUserProfile(me);
+
+        if (me.role === 'Employee') {
+          const [complaintsRes, notificationsRes, surveysRes] = await Promise.all([
+            fetchEmployeeComplaints(),
+            apiFetchNotifications(),
+            fetchSurveys(),
+          ]);
+          if (!active) return;
+          setSubmissions((complaintsRes.items || []).map(mapComplaint));
+          setNotifications((notificationsRes.items || []).map(mapNotification));
+          setSurveyResponses((surveysRes.items || []).map(mapSurvey));
+        } else if (me.role === 'Manager') {
+          const [actionsRes, notificationsRes] = await Promise.all([
+            fetchManagerActions(),
+            apiFetchNotifications(),
+          ]);
+          if (!active) return;
+          setSubmissions((actionsRes.items || []).map(mapComplaint));
+          setNotifications((notificationsRes.items || []).map(mapNotification));
+        } else if (me.role === 'CTO' || me.role === 'COO') {
+          const [submissionsRes, managersRes, notificationsRes] = await Promise.all([
+            fetchDeptSubmissions(),
+            fetchDeptManagers(),
+            apiFetchNotifications(),
+          ]);
+          if (!active) return;
+          setSubmissions((submissionsRes.items || []).map(mapComplaint));
+          setManagers(
+            (managersRes.items || []).map((manager: any) => ({
+              id: manager.employee_id,
+              name: manager.name,
+              department: mapDepartment(manager.department),
+              role: manager.role,
+              avatar: manager.avatar_url || 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150',
+            }))
+          );
+          setNotifications((notificationsRes.items || []).map(mapNotification));
+        } else if (me.role === 'CEO') {
+          const [submissionsRes, notificationsRes] = await Promise.all([
+            fetchCeoSubmissions(),
+            apiFetchNotifications(),
+          ]);
+          if (!active) return;
+          setSubmissions((submissionsRes.items || []).map(mapComplaint));
+          setNotifications((notificationsRes.items || []).map(mapNotification));
+        }
+      } catch {
+        // Keep local fallback data if the backend is unavailable.
+      }
+    };
+
+    void hydrate();
+    return () => {
+      active = false;
+    };
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('resolve_submissions', JSON.stringify(submissions));
@@ -361,153 +581,42 @@ export const ResolveProvider: React.FC<{ children: React.ReactNode }> = ({ child
     localStorage.setItem('resolve_surveys', JSON.stringify(surveyResponses));
   }, [surveyResponses]);
 
-  const setCurrentUserRole = (role: UserRole) => {
-    setCurrentUserRoleState(role);
-    localStorage.setItem('resolve_role', role);
-  };
-
-  // Determine User Context metadata based on Active Role
-  let currentUserId = 'emp-1';
-  let currentUserName = 'Sarah Chen';
-  let currentUserAvatar = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150';
-  let currentUserDept: 'Technology' | 'Operations' = 'Technology';
-
-  if (currentUserRole === 'Manager') {
-    currentUserId = 'mgr-1';
-    currentUserName = 'Sophia Rodriguez';
-    currentUserAvatar = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150';
-    currentUserDept = 'Technology';
-  } else if (currentUserRole === 'CTO') {
-    currentUserId = 'exec-cto';
-    currentUserName = 'Dr. Aris Thorne';
-    currentUserAvatar = 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150';
-    currentUserDept = 'Technology';
-  } else if (currentUserRole === 'COO') {
-    currentUserId = 'exec-coo';
-    currentUserName = 'Marcus Sterling';
-    currentUserAvatar = 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150';
-    currentUserDept = 'Operations';
-  } else if (currentUserRole === 'CEO') {
-    currentUserId = 'exec-ceo';
-    currentUserName = 'Victoria Vance';
-    currentUserAvatar = 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150';
-    currentUserDept = 'Technology'; // default
-  }
-
-  // Mutators
-
-  // Employee Submits
-  const addSubmission = (newSub: Omit<Submission, 'id' | 'date' | 'status' | 'aiCategory' | 'priority' | 'evidenceScore' | 'evidenceBreakdown' | 'intelligenceSummary' | 'confidence' | 'assignedExecutive' | 'actionPlan' | 'verification'>) => {
-    const id = `sub-${Math.floor(100 + Math.random() * 900)}`;
-    const date = new Date().toISOString().split('T')[0];
-    
-    // Simulate AI smart parameters based on keyword matching
-    let aiCategory = 'General Organizational Wellness';
-    let priority: 'Low' | 'Medium' | 'High' | 'Critical' = 'Medium';
-    let evidenceScore = 65; // base score
-    let confidence = 85;
-    let evidenceBreakdown = [
-      'AI validation scans current channels and team surveys.',
-      'System correlates submission content with team metrics.',
-      'No explicit file verification requested.'
-    ];
-    let intelligenceSummary = '';
-
-    const textInput = (newSub.title + ' ' + newSub.description).toLowerCase();
-
+  const addSubmission = async (
+    newSub: Omit<Submission, 'id' | 'date' | 'status' | 'aiCategory' | 'priority' | 'evidenceScore' | 'evidenceBreakdown' | 'intelligenceSummary' | 'confidence' | 'assignedExecutive' | 'actionPlan' | 'verification'>
+  ) => {
     if (newSub.type === 'Survey') {
-      // Create survey structure and add to survey state
-      const ratings = (newSub as any).ratings || { communication: 3, growth: 3, managerSupport: 3, environment: 3, recognition: 3, workLifeBalance: 3 };
-      const newSurveyRes: SurveyResponse = {
-        id: `s-${Math.floor(100 + Math.random() * 900)}`,
-        date,
-        ratings,
-        comments: newSub.description
-      };
-      setSurveyResponses(prev => [newSurveyRes, ...prev]);
-      return id;
+      const payload = (newSub as any).ratings
+        ? { ratings: (newSub as any).ratings, comments: newSub.description }
+        : {
+            ratings: {
+              communication: 3,
+              growth: 3,
+              managerSupport: 3,
+              environment: 3,
+              recognition: 3,
+              workLifeBalance: 3,
+            },
+            comments: newSub.description,
+          };
+      const result = await apiSubmitSurvey(payload);
+      const survey = mapSurvey(result);
+      setSurveyResponses(prev => [survey, ...prev.filter(item => item.id !== survey.id)]);
+      return survey.id;
     }
 
-    if (textInput.includes('staging') || textInput.includes('server') || textInput.includes('database') || textInput.includes('tech stack') || textInput.includes('migration') || textInput.includes('developer')) {
-      aiCategory = 'Developer Experience & Infrastructure';
-      priority = 'High';
-      evidenceScore = 88;
-      confidence = 92;
-      evidenceBreakdown = [
-        'Sentry tracking shows anomalous crash incidents in developers environments.',
-        'Similar infrastructure remarks were detailed in 3 prior developer syncs.',
-        'File uploaded or referenced for staging environment setup.'
-      ];
-      intelligenceSummary = 'The user identifies database schema synchronization delays. Development pipelines show recurring rebuild lags, supporting the report with high alignment.';
-    } else if (textInput.includes('career') || textInput.includes('promotion') || textInput.includes('ladder') || textInput.includes('progression') || textInput.includes('growth')) {
-      aiCategory = 'Career Development & Growth';
-      priority = 'Medium';
-      evidenceScore = 75;
-      confidence = 89;
-      evidenceBreakdown = [
-        'HR dashboards reveal higher attrition rate for core Senior IC staff.',
-        'External benchmarking indicates peer companies have standardized Dual Career Ladders.'
-      ];
-      intelligenceSummary = 'The user raises technical track growth bottlenecks. Internal logs and exit surveys align, indicating staff retention risks due to linear management conversion requirements.';
-    } else if (textInput.includes('overtime') || textInput.includes('shift') || textInput.includes('warehouse') || textInput.includes('burnout') || textInput.includes('workload')) {
-      aiCategory = 'Work Environment & Safety';
-      priority = 'High';
-      evidenceScore = 92;
-      confidence = 95;
-      evidenceBreakdown = [
-        'Operations payroll shows a 30% increase in overtime hours this quarter.',
-        'Work schedule logs confirm irregular shift extensions at fulfillment centers.'
-      ];
-      intelligenceSummary = 'The submission references severe overtime burnout. Shift planning analytics verify a workload imbalance relative to packaging volumes.';
-    } else {
-      aiCategory = 'Operational Efficiency';
-      priority = 'Medium';
-      evidenceScore = 70;
-      confidence = 80;
-      evidenceBreakdown = [
-        'Standard operational feedback validation completed.',
-        'System flags routine communication delays.'
-      ];
-      intelligenceSummary = 'The employee highlights administrative friction. Comm logs note delay variables, pointing to potential efficiency improvements.';
-    }
-
-    const assignedExecutive = newSub.department === 'Technology' ? 'CTO' : 'COO';
-
-    const fullSubmission: Submission = {
-      ...newSub,
-      id,
-      date,
-      status: 'Pending Review',
-      aiCategory,
-      priority,
-      evidenceScore,
-      evidenceBreakdown,
-      intelligenceSummary,
-      confidence,
-      assignedExecutive,
-      actionPlan: null,
-      verification: null
-    };
-
-    setSubmissions(prev => [fullSubmission, ...prev]);
-
-    // Create notifications for the department head
-    const newNotification: Notification = {
-      id: `n-${Math.floor(1000 + Math.random() * 9000)}`,
-      title: 'New Submission Routed',
-      message: `A new ${newSub.type.toLowerCase()} regarding "${newSub.title.substring(0, 30)}..." has been routed to you.`,
-      time: 'Just now',
-      read: false,
-      role: assignedExecutive
-    };
-
-    setNotifications(prev => [newNotification, ...prev]);
-
-    return id;
+    const created = await apiCreateComplaint({
+      complaint_type: newSub.type,
+      title: newSub.title,
+      description: newSub.description,
+      department: newSub.department,
+      expected_benefits: newSub.expectedBenefits,
+    });
+    const mapped = mapComplaint(created);
+    setSubmissions(prev => [mapped, ...prev.filter(item => item.id !== mapped.id)]);
+    return mapped.id;
   };
 
-  // Department Head Assigns Action Plan
-  const assignActionPlan = (
+  const assignActionPlan = async (
     submissionId: string,
     actionPlanData: Omit<ActionPlan, 'progress'>,
     managerId: string,
@@ -515,187 +624,74 @@ export const ResolveProvider: React.FC<{ children: React.ReactNode }> = ({ child
     deadline: string,
     instructions: string
   ) => {
-    setSubmissions(prev => prev.map(sub => {
-      if (sub.id !== submissionId) return sub;
-
-      const plan: ActionPlan = {
-        ...actionPlanData,
-        priority,
-        deadline,
-        instructions,
-        progress: 0,
-        checklist: actionPlanData.checklist.map(item => ({ ...item, completed: false }))
-      };
-
-      return {
-        ...sub,
-        status: 'In Progress',
-        assignedManagerId: managerId,
-        actionPlan: plan
-      };
-    }));
-
-    const managerObj = INITIAL_MANAGERS.find(m => m.id === managerId);
-    
-    // Notifications
-    const newNotifications: Notification[] = [
-      {
-        id: `n-${Math.floor(1000 + Math.random() * 9000)}`,
-        title: 'New Action Assigned',
-        message: `Action Plan "${actionPlanData.title}" has been assigned to you by ${currentUserRole}.`,
-        time: 'Just now',
-        read: false,
-        role: 'Manager'
-      },
-      {
-        id: `n-${Math.floor(1000 + Math.random() * 9000)}`,
-        title: 'Action Scheduled',
-        message: `Action plan initiated and assigned to ${managerObj?.name || 'Manager'}.`,
-        time: 'Just now',
-        read: false,
-        role: 'Employee'
-      }
-    ];
-
-    setNotifications(prev => [...newNotifications, ...prev]);
+    const result = await apiAssignActionPlan(submissionId, {
+      title: actionPlanData.title,
+      description: actionPlanData.description,
+      expected_impact: actionPlanData.expectedImpact,
+      estimated_time: actionPlanData.estimatedTime,
+      business_value: actionPlanData.businessValue,
+      checklist: actionPlanData.checklist,
+      manager_id: managerId,
+      priority,
+      instructions,
+      deadline,
+    });
+    setSubmissions(prev =>
+      prev.map(sub => (sub.id === submissionId ? mapComplaint(result) : sub))
+    );
   };
 
-  // Manager Updates Progress
-  const updateManagerActionProgress = (
+  const updateManagerActionProgress = async (
     submissionId: string,
     checklist: ChecklistItem[],
     progress: number,
     notes?: string,
     file?: { name: string; url: string }
   ) => {
-    setSubmissions(prev => prev.map(sub => {
-      if (sub.id !== submissionId || !sub.actionPlan) return sub;
-
-      return {
-        ...sub,
-        actionPlan: {
-          ...sub.actionPlan,
-          checklist,
-          progress,
-          completionNotes: notes || sub.actionPlan.completionNotes,
-          proofFileName: file ? file.name : sub.actionPlan.proofFileName,
-          proofUrl: file ? file.url : sub.actionPlan.proofUrl
-        }
-      };
-    }));
+    const result = await apiUpdateManagerAction(submissionId, {
+      checklist,
+      progress,
+      notes,
+      proof_name: file?.name,
+      proof_url: file?.url,
+    });
+    setSubmissions(prev =>
+      prev.map(sub => (sub.id === submissionId ? mapComplaint(result) : sub))
+    );
   };
 
-  // Manager Marks Action Complete
-  const completeManagerAction = (
+  const completeManagerAction = async (
     submissionId: string,
     notes: string,
     file?: { name: string; url: string }
   ) => {
-    const today = new Date().toISOString().split('T')[0];
-    
-    setSubmissions(prev => prev.map(sub => {
-      if (sub.id !== submissionId || !sub.actionPlan) return sub;
-
-      const completedChecklist = sub.actionPlan.checklist.map(item => ({ ...item, completed: true }));
-
-      return {
-        ...sub,
-        status: 'Resolved',
-        actionPlan: {
-          ...sub.actionPlan,
-          checklist: completedChecklist,
-          progress: 100,
-          completedAt: today,
-          completionNotes: notes,
-          proofFileName: file ? file.name : sub.actionPlan.proofFileName,
-          proofUrl: file ? file.url : sub.actionPlan.proofUrl
-        }
-      };
-    }));
-
-    // Find submission for employee notice
-    const targetSub = submissions.find(s => s.id === submissionId);
-
-    // Notifications
-    const newNotifications: Notification[] = [
-      {
-        id: `n-${Math.floor(1000 + Math.random() * 9000)}`,
-        title: 'Action Completed',
-        message: `Manager completed action for "${targetSub?.title.substring(0, 20)}...". Please verify.`,
-        time: 'Just now',
-        read: false,
-        role: 'Employee'
-      },
-      {
-        id: `n-${Math.floor(1000 + Math.random() * 9000)}`,
-        title: 'Resolution Submitted',
-        message: `Action plan for "${targetSub?.title.substring(0, 20)}..." has been marked complete by the manager.`,
-        time: 'Just now',
-        read: false,
-        role: targetSub?.assignedExecutive || 'CTO'
-      }
-    ];
-
-    setNotifications(prev => [...newNotifications, ...prev]);
+    const result = await apiCompleteManagerAction(submissionId);
+    setSubmissions(prev =>
+      prev.map(sub => (sub.id === submissionId ? mapComplaint(result) : sub))
+    );
+    void notes;
+    void file;
   };
 
-  // Employee Verifies
-  const submitEmployeeVerification = (
+  const submitEmployeeVerification = async (
     submissionId: string,
     rating: 'Yes' | 'Partially' | 'No',
     score: number,
     comments: string
   ) => {
-    const today = new Date().toISOString().split('T')[0];
-    
-    setSubmissions(prev => prev.map(sub => {
-      if (sub.id !== submissionId) return sub;
-
-      return {
-        ...sub,
-        status: 'Verified',
-        verification: {
-          improvementRating: rating,
-          comments,
-          score,
-          date: today
-        }
-      };
-    }));
-
-    const targetSub = submissions.find(s => s.id === submissionId);
-
-    // Notifications
-    const newNotifications: Notification[] = [
-      {
-        id: `n-${Math.floor(1000 + Math.random() * 9000)}`,
-        title: 'Resolution Verified',
-        message: `Employee verified improvement as "${rating}" for "${targetSub?.title.substring(0, 20)}...".`,
-        time: 'Just now',
-        read: false,
-        role: targetSub?.assignedExecutive || 'CTO'
-      },
-      {
-        id: `n-${Math.floor(1000 + Math.random() * 9000)}`,
-        title: 'Resolution Verified',
-        message: `Employee verified improvement as "${rating}" for "${targetSub?.title.substring(0, 20)}...".`,
-        time: 'Just now',
-        read: false,
-        role: 'CEO'
-      }
-    ];
-
-    setNotifications(prev => [...newNotifications, ...prev]);
+    const result = await apiVerifyEmployeeComplaint(submissionId, {
+      improvement_rating: rating,
+      score,
+      comments,
+    });
+    setSubmissions(prev => prev.map(sub => (sub.id === submissionId ? mapComplaint(result) : sub)));
   };
 
-  // Mark all notifications for a role read
-  const markNotificationsAsRead = (role: UserRole) => {
-    setNotifications(prev => prev.map(notif => {
-      if (notif.role === role) {
-        return { ...notif, read: true };
-      }
-      return notif;
-    }));
+  const markNotificationsAsRead = async (role: UserRole) => {
+    await apiMarkNotificationsRead();
+    setNotifications(prev =>
+      prev.map(notif => (notif.role === role ? { ...notif, read: true } : notif))
+    );
   };
 
   return (
@@ -707,9 +703,10 @@ export const ResolveProvider: React.FC<{ children: React.ReactNode }> = ({ child
         currentUserAvatar,
         currentUserDept,
         setCurrentUserRole,
+        setCurrentUserProfile,
         submissions,
         notifications,
-        managers: INITIAL_MANAGERS,
+        managers,
         employees: INITIAL_EMPLOYEES,
         surveyResponses,
         addSubmission,
@@ -717,7 +714,7 @@ export const ResolveProvider: React.FC<{ children: React.ReactNode }> = ({ child
         updateManagerActionProgress,
         completeManagerAction,
         submitEmployeeVerification,
-        markNotificationsAsRead
+        markNotificationsAsRead,
       }}
     >
       {children}
