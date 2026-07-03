@@ -1,0 +1,449 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-07-03",
+  "executives": {
+    "CTO": {
+      "owner_title": "Chief Technology Officer",
+      "manager_names": ["Sophia Rodriguez", "Alex Kim"]
+    },
+    "COO": {
+      "owner_title": "Chief Operating Officer",
+      "manager_names": ["Emily Chen", "Michael Vance"]
+    }
+  },
+  "category_taxonomy": {
+    "Communication": "Employee-manager communication quality: responsiveness, meeting cadence, clarity, feedback loop",
+    "Growth": "Career development & growth actions: goals, coaching, promotions, review cadence",
+    "Compensation": "Pay/bonus transparency and timeliness",
+    "Leadership": "Management behavior & fairness",
+    "Developer Experience": "Tooling/process quality impacting devs (CI/CD, testing, performance)",
+    "Work Environment": "Facilities, safety, accessibility, workspace constraints"
+  },
+  "managers": [
+    {
+      "manager_name": "Sophia Rodriguez",
+      "executive_owner": "CTO",
+      "department": "Technology",
+      "manager_type": "Technical",
+      "specializations": ["Infrastructure", "Database", "DevOps", "Network"],
+      "employee_records": [
+        {
+          "employee_id": "emp-1001",
+          "employee_name": "Avery Patel",
+          "team": "Infrastructure",
+          "designation": "SRE",
+          "concern_category": "Communication",
+          "days_since_last_meeting": 14,
+          "meeting_count_last_90_days": 7,
+          "last_meeting_type": "1:1",
+          "last_meeting_date": "2026-06-19",
+          "topic_coverage": {
+            "Communication": {"coverage_days": 4, "coverage_score": 0.78},
+            "Growth": {"coverage_days": 2, "coverage_score": 0.55},
+            "Compensation": {"coverage_days": 0, "coverage_score": 0.22},
+            "Leadership": {"coverage_days": 1, "coverage_score": 0.35},
+            "Developer Experience": {"coverage_days": 3, "coverage_score": 0.62},
+            "Work Environment": {"coverage_days": 0, "coverage_score": 0.10}
+          },
+          "bias_authentication_signal": {
+            "employee_verification_reliability": 0.82,
+            "pattern_attribution": "Mostly-aligned",
+            "manager_investigation_flags": ["No missed meeting cadence"]
+          }
+        },
+        {
+          "employee_id": "emp-1002",
+          "employee_name": "Jordan Lee",
+          "team": "Database",
+          "designation": "DB Engineer",
+          "concern_category": "Growth",
+          "days_since_last_meeting": 46,
+          "meeting_count_last_90_days": 2,
+          "last_meeting_type": "Team sync",
+          "last_meeting_date": "2026-05-18",
+          "topic_coverage": {
+            "Communication": {"coverage_days": 1, "coverage_score": 0.28},
+            "Growth": {"coverage_days": 0, "coverage_score": 0.18},
+            "Compensation": {"coverage_days": 0, "coverage_score": 0.12},
+            "Leadership": {"coverage_days": 0, "coverage_score": 0.20},
+            "Developer Experience": {"coverage_days": 1, "coverage_score": 0.40},
+            "Work Environment": {"coverage_days": 0, "coverage_score": 0.08}
+          },
+          "bias_authentication_signal": {
+            "employee_verification_reliability": 0.74,
+            "pattern_attribution": "Partially-aligned",
+            "manager_investigation_flags": ["Low meeting cadence", "Growth coverage missing"]
+          }
+        },
+        {
+          "employee_id": "emp-1003",
+          "employee_name": "Samira Khan",
+          "team": "DevOps",
+          "designation": "DevOps Engineer",
+          "concern_category": "Developer Experience",
+          "days_since_last_meeting": 7,
+          "meeting_count_last_90_days": 9,
+          "last_meeting_type": "Technical review",
+          "last_meeting_date": "2026-06-26",
+          "topic_coverage": {
+            "Communication": {"coverage_days": 3, "coverage_score": 0.70},
+            "Growth": {"coverage_days": 2, "coverage_score": 0.50},
+            "Compensation": {"coverage_days": 0, "coverage_score": 0.18},
+            "Leadership": {"coverage_days": 1, "coverage_score": 0.42},
+            "Developer Experience": {"coverage_days": 4, "coverage_score": 0.86},
+            "Work Environment": {"coverage_days": 0, "coverage_score": 0.10}
+          },
+          "bias_authentication_signal": {
+            "employee_verification_reliability": 0.88,
+            "pattern_attribution": "Mostly-aligned",
+            "manager_investigation_flags": ["Relevant technical touchpoints frequent"]
+          }
+        },
+        {
+          "employee_id": "emp-1004",
+          "employee_name": "Noah Garcia",
+          "team": "Network",
+          "designation": "Network Engineer",
+          "concern_category": "Leadership",
+          "days_since_last_meeting": 20,
+          "meeting_count_last_90_days": 5,
+          "last_meeting_type": "Performance review",
+          "last_meeting_date": "2026-06-13",
+          "topic_coverage": {
+            "Communication": {"coverage_days": 2, "coverage_score": 0.58},
+            "Growth": {"coverage_days": 1, "coverage_score": 0.34},
+            "Compensation": {"coverage_days": 1, "coverage_score": 0.46},
+            "Leadership": {"coverage_days": 2, "coverage_score": 0.66},
+            "Developer Experience": {"coverage_days": 1, "coverage_score": 0.38},
+            "Work Environment": {"coverage_days": 0, "coverage_score": 0.09}
+          },
+          "bias_authentication_signal": {
+            "employee_verification_reliability": 0.79,
+            "pattern_attribution": "Aligned-with-evidence",
+            "manager_investigation_flags": ["Performance review held within cadence"]
+          }
+        }
+      ]
+    },
+    {
+      "manager_name": "Alex Kim",
+      "executive_owner": "CTO",
+      "department": "Technology",
+      "manager_type": "Technical",
+      "specializations": ["Software", "API", "Developer Experience", "Product"],
+      "employee_records": [
+        {
+          "employee_id": "emp-1101",
+          "employee_name": "Mia Chen",
+          "team": "API Platform",
+          "designation": "Software Engineer",
+          "concern_category": "Communication",
+          "days_since_last_meeting": 3,
+          "meeting_count_last_90_days": 11,
+          "last_meeting_type": "1:1",
+          "last_meeting_date": "2026-06-30",
+          "topic_coverage": {
+            "Communication": {"coverage_days": 5, "coverage_score": 0.92},
+            "Growth": {"coverage_days": 1, "coverage_score": 0.40},
+            "Compensation": {"coverage_days": 0, "coverage_score": 0.10},
+            "Leadership": {"coverage_days": 1, "coverage_score": 0.36},
+            "Developer Experience": {"coverage_days": 3, "coverage_score": 0.72},
+            "Work Environment": {"coverage_days": 0, "coverage_score": 0.08}
+          },
+          "bias_authentication_signal": {
+            "employee_verification_reliability": 0.90,
+            "pattern_attribution": "Potential-bias-signal",
+            "manager_investigation_flags": ["Meetings are frequent (bias check: communication claim may be exaggerated)"]
+          }
+        },
+        {
+          "employee_id": "emp-1102",
+          "employee_name": "Ethan Brooks",
+          "team": "Product Engineering",
+          "designation": "Senior Software Engineer",
+          "concern_category": "Growth",
+          "days_since_last_meeting": 61,
+          "meeting_count_last_90_days": 1,
+          "last_meeting_type": "Quarterly planning",
+          "last_meeting_date": "2026-04-24",
+          "topic_coverage": {
+            "Communication": {"coverage_days": 0, "coverage_score": 0.12},
+            "Growth": {"coverage_days": 0, "coverage_score": 0.16},
+            "Compensation": {"coverage_days": 0, "coverage_score": 0.10},
+            "Leadership": {"coverage_days": 0, "coverage_score": 0.18},
+            "Developer Experience": {"coverage_days": 1, "coverage_score": 0.35},
+            "Work Environment": {"coverage_days": 0, "coverage_score": 0.07}
+          },
+          "bias_authentication_signal": {
+            "employee_verification_reliability": 0.77,
+            "pattern_attribution": "Aligned",
+            "manager_investigation_flags": ["Long gap since last meeting", "Growth topics not covered"]
+          }
+        },
+        {
+          "employee_id": "emp-1103",
+          "employee_name": "Priya Nair",
+          "team": "Platform",
+          "designation": "Software Engineer",
+          "concern_category": "Developer Experience",
+          "days_since_last_meeting": 18,
+          "meeting_count_last_90_days": 6,
+          "last_meeting_type": "Technical review",
+          "last_meeting_date": "2026-06-15",
+          "topic_coverage": {
+            "Communication": {"coverage_days": 2, "coverage_score": 0.55},
+            "Growth": {"coverage_days": 2, "coverage_score": 0.44},
+            "Compensation": {"coverage_days": 0, "coverage_score": 0.14},
+            "Leadership": {"coverage_days": 1, "coverage_score": 0.33},
+            "Developer Experience": {"coverage_days": 4, "coverage_score": 0.80},
+            "Work Environment": {"coverage_days": 0, "coverage_score": 0.10}
+          },
+          "bias_authentication_signal": {
+            "employee_verification_reliability": 0.84,
+            "pattern_attribution": "Aligned-with-evidence",
+            "manager_investigation_flags": ["DevExp touchpoints present"]
+          }
+        },
+        {
+          "employee_id": "emp-1104",
+          "employee_name": "Lucas Wright",
+          "team": "API Platform",
+          "designation": "QA Engineer",
+          "concern_category": "Work Environment",
+          "days_since_last_meeting": 25,
+          "meeting_count_last_90_days": 4,
+          "last_meeting_type": "Team sync",
+          "last_meeting_date": "2026-06-08",
+          "topic_coverage": {
+            "Communication": {"coverage_days": 1, "coverage_score": 0.30},
+            "Growth": {"coverage_days": 1, "coverage_score": 0.32},
+            "Compensation": {"coverage_days": 0, "coverage_score": 0.12},
+            "Leadership": {"coverage_days": 0, "coverage_score": 0.22},
+            "Developer Experience": {"coverage_days": 1, "coverage_score": 0.28},
+            "Work Environment": {"coverage_days": 3, "coverage_score": 0.70}
+          },
+          "bias_authentication_signal": {
+            "employee_verification_reliability": 0.73,
+            "pattern_attribution": "Partially-aligned",
+            "manager_investigation_flags": ["Some workplace topic coverage; verify facilities follow-up"]
+          }
+        }
+      ]
+    },
+    {
+      "manager_name": "Emily Chen",
+      "executive_owner": "COO",
+      "department": "Operations",
+      "manager_type": "Operational",
+      "specializations": ["Logistics", "Warehouse", "Shift Planning", "Vendor"],
+      "employee_records": [
+        {
+          "employee_id": "emp-2001",
+          "employee_name": "Harper Scott",
+          "team": "Warehouse Logistics",
+          "designation": "Operations Associate",
+          "concern_category": "Communication",
+          "days_since_last_meeting": 10,
+          "meeting_count_last_90_days": 8,
+          "last_meeting_type": "Shift debrief",
+          "last_meeting_date": "2026-06-23",
+          "topic_coverage": {
+            "Communication": {"coverage_days": 5, "coverage_score": 0.88},
+            "Growth": {"coverage_days": 2, "coverage_score": 0.46},
+            "Compensation": {"coverage_days": 0, "coverage_score": 0.16},
+            "Leadership": {"coverage_days": 1, "coverage_score": 0.40},
+            "Developer Experience": {"coverage_days": 0, "coverage_score": 0.08},
+            "Work Environment": {"coverage_days": 1, "coverage_score": 0.25}
+          },
+          "bias_authentication_signal": {
+            "employee_verification_reliability": 0.86,
+            "pattern_attribution": "Aligned-with-evidence",
+            "manager_investigation_flags": ["Shift debrief cadence consistent"]
+          }
+        },
+        {
+          "employee_id": "emp-2002",
+          "employee_name": "Daniel Kim",
+          "team": "Shift Planning",
+          "designation": "Shift Coordinator",
+          "concern_category": "Leadership",
+          "days_since_last_meeting": 39,
+          "meeting_count_last_90_days": 3,
+          "last_meeting_type": "Performance review",
+          "last_meeting_date": "2026-05-01",
+          "topic_coverage": {
+            "Communication": {"coverage_days": 2, "coverage_score": 0.50},
+            "Growth": {"coverage_days": 1, "coverage_score": 0.30},
+            "Compensation": {"coverage_days": 1, "coverage_score": 0.36},
+            "Leadership": {"coverage_days": 0, "coverage_score": 0.20},
+            "Developer Experience": {"coverage_days": 0, "coverage_score": 0.10},
+            "Work Environment": {"coverage_days": 0, "coverage_score": 0.12}
+          },
+          "bias_authentication_signal": {
+            "employee_verification_reliability": 0.71,
+            "pattern_attribution": "Partially-aligned",
+            "manager_investigation_flags": ["Review held, but Leadership topic coverage low"]
+          }
+        },
+        {
+          "employee_id": "emp-2003",
+          "employee_name": "Sophia Martinez",
+          "team": "Vendor Management",
+          "designation": "Procurement Specialist",
+          "concern_category": "Work Environment",
+          "days_since_last_meeting": 17,
+          "meeting_count_last_90_days": 6,
+          "last_meeting_type": "Team sync",
+          "last_meeting_date": "2026-06-16",
+          "topic_coverage": {
+            "Communication": {"coverage_days": 2, "coverage_score": 0.58},
+            "Growth": {"coverage_days": 1, "coverage_score": 0.34},
+            "Compensation": {"coverage_days": 0, "coverage_score": 0.12},
+            "Leadership": {"coverage_days": 1, "coverage_score": 0.42},
+            "Developer Experience": {"coverage_days": 0, "coverage_score": 0.09},
+            "Work Environment": {"coverage_days": 4, "coverage_score": 0.85}
+          },
+          "bias_authentication_signal": {
+            "employee_verification_reliability": 0.83,
+            "pattern_attribution": "Mostly-aligned",
+            "manager_investigation_flags": ["Work Environment topics show sustained discussion"]
+          }
+        },
+        {
+          "employee_id": "emp-2004",
+          "employee_name": "Olivia Harris",
+          "team": "Warehouse Logistics",
+          "designation": "Warehouse Supervisor",
+          "concern_category": "Growth",
+          "days_since_last_meeting": 52,
+          "meeting_count_last_90_days": 2,
+          "last_meeting_type": "Quarterly planning",
+          "last_meeting_date": "2026-04-12",
+          "topic_coverage": {
+            "Communication": {"coverage_days": 1, "coverage_score": 0.22},
+            "Growth": {"coverage_days": 0, "coverage_score": 0.16},
+            "Compensation": {"coverage_days": 1, "coverage_score": 0.40},
+            "Leadership": {"coverage_days": 1, "coverage_score": 0.33},
+            "Developer Experience": {"coverage_days": 0, "coverage_score": 0.10},
+            "Work Environment": {"coverage_days": 0, "coverage_score": 0.14}
+          },
+          "bias_authentication_signal": {
+            "employee_verification_reliability": 0.76,
+            "pattern_attribution": "Aligned",
+            "manager_investigation_flags": ["Long gap since last meeting", "Growth focus absent"]
+          }
+        }
+      ]
+    },
+    {
+      "manager_name": "Michael Vance",
+      "executive_owner": "COO",
+      "department": "Operations",
+      "manager_type": "Operational",
+      "specializations": ["Manager Conduct", "Communication", "Performance Reviews", "Payroll"],
+      "employee_records": [
+        {
+          "employee_id": "emp-2101",
+          "employee_name": "Amelia Reed",
+          "team": "Payroll",
+          "designation": "Payroll Analyst",
+          "concern_category": "Compensation",
+          "days_since_last_meeting": 8,
+          "meeting_count_last_90_days": 8,
+          "last_meeting_type": "1:1",
+          "last_meeting_date": "2026-06-25",
+          "topic_coverage": {
+            "Communication": {"coverage_days": 2, "coverage_score": 0.58},
+            "Growth": {"coverage_days": 1, "coverage_score": 0.35},
+            "Compensation": {"coverage_days": 5, "coverage_score": 0.90},
+            "Leadership": {"coverage_days": 1, "coverage_score": 0.40},
+            "Developer Experience": {"coverage_days": 0, "coverage_score": 0.10},
+            "Work Environment": {"coverage_days": 0, "coverage_score": 0.12}
+          },
+          "bias_authentication_signal": {
+            "employee_verification_reliability": 0.89,
+            "pattern_attribution": "Potential-bias-signal",
+            "manager_investigation_flags": ["Compensation topics addressed frequently (verify claim details)"]
+          }
+        },
+        {
+          "employee_id": "emp-2102",
+          "employee_name": "Caleb Thompson",
+          "team": "Safety",
+          "designation": "Safety Officer",
+          "concern_category": "Work Environment",
+          "days_since_last_meeting": 33,
+          "meeting_count_last_90_days": 3,
+          "last_meeting_type": "Safety audit",
+          "last_meeting_date": "2026-05-02",
+          "topic_coverage": {
+            "Communication": {"coverage_days": 1, "coverage_score": 0.35},
+            "Growth": {"coverage_days": 1, "coverage_score": 0.32},
+            "Compensation": {"coverage_days": 0, "coverage_score": 0.18},
+            "Leadership": {"coverage_days": 1, "coverage_score": 0.41},
+            "Developer Experience": {"coverage_days": 0, "coverage_score": 0.08},
+            "Work Environment": {"coverage_days": 4, "coverage_score": 0.78}
+          },
+          "bias_authentication_signal": {
+            "employee_verification_reliability": 0.74,
+            "pattern_attribution": "Aligned-with-evidence",
+            "manager_investigation_flags": ["Work Environment covered; follow-up action required"]
+          }
+        },
+        {
+          "employee_id": "emp-2103",
+          "employee_name": "Zoe Turner",
+          "team": "Operations",
+          "designation": "Operations Lead",
+          "concern_category": "Communication",
+          "days_since_last_meeting": 67,
+          "meeting_count_last_90_days": 1,
+          "last_meeting_type": "Quarterly planning",
+          "last_meeting_date": "2026-04-04",
+          "topic_coverage": {
+            "Communication": {"coverage_days": 0, "coverage_score": 0.14},
+            "Growth": {"coverage_days": 0, "coverage_score": 0.16},
+            "Compensation": {"coverage_days": 1, "coverage_score": 0.40},
+            "Leadership": {"coverage_days": 0, "coverage_score": 0.22},
+            "Developer Experience": {"coverage_days": 0, "coverage_score": 0.10},
+            "Work Environment": {"coverage_days": 1, "coverage_score": 0.28}
+          },
+          "bias_authentication_signal": {
+            "employee_verification_reliability": 0.80,
+            "pattern_attribution": "Aligned",
+            "manager_investigation_flags": ["Very low meeting cadence", "Communication coverage missing"]
+          }
+        },
+        {
+          "employee_id": "emp-2104",
+          "employee_name": "Ryan Foster",
+          "team": "Performance Reviews",
+          "designation": "Team Supervisor",
+          "concern_category": "Growth",
+          "days_since_last_meeting": 21,
+          "meeting_count_last_90_days": 5,
+          "last_meeting_type": "Performance review",
+          "last_meeting_date": "2026-06-12",
+          "topic_coverage": {
+            "Communication": {"coverage_days": 2, "coverage_score": 0.60},
+            "Growth": {"coverage_days": 3, "coverage_score": 0.76},
+            "Compensation": {"coverage_days": 1, "coverage_score": 0.44},
+            "Leadership": {"coverage_days": 1, "coverage_score": 0.36},
+            "Developer Experience": {"coverage_days": 0, "coverage_score": 0.09},
+            "Work Environment": {"coverage_days": 0, "coverage_score": 0.15}
+          },
+          "bias_authentication_signal": {
+            "employee_verification_reliability": 0.82,
+            "pattern_attribution": "Mostly-aligned",
+            "manager_investigation_flags": ["Growth topics discussed in reviews"]
+          }
+        }
+      ]
+    }
+  ],
+  "notes": {
+    "intended_use": "This dataset is meant to authenticate employee concerns by comparing the asserted concern category with manager meeting cadence and category-specific topic coverage for that employee.",
+    "bias_authentication_signal": "Heuristic placeholders for now (to be replaced by real computed metrics when integrated into the backend)."
+  }
+}
+
