@@ -13,12 +13,6 @@ out/
 .next/
 backend.zip
 
-# Backend package scaffolding
-backend/Dockerfile
-backend/README.md
-backend/docker-compose.yml
-backend/requirements.txt
-
 # IDE and OS files
 .DS_Store
 .idea/
@@ -35,6 +29,7 @@ backend/requirements.txt
 .env.development.local
 .env.test.local
 .env.production.local
+backend-ai/.env
 
 # Logs
 npm-debug.log*
@@ -46,10 +41,20 @@ lerna-debug.log*
 # Python cache and bytecode
 __pycache__/
 *.py[cod]
+*.py[cod]
+*$py.class
 *.so
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+*.egg-info/
+.coverage
+htmlcov/
+venv/
+env/
+
+# Docker
+docker-compose.override.yml
 
 # Tooling
 .gemini/

@@ -1,46 +1,30 @@
 import React, { useState } from 'react';
 import { useResolve } from '../ResolveContext';
-import type { UserRole } from '../ResolveContext';
-import { Bell, Search, ChevronDown, Sparkles, LogOut, Check } from 'lucide-react';
+import { Bell, Search, ChevronDown, LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 export const Navbar: React.FC = () => {
   const {
     currentUserRole,
-    setCurrentUserRole,
     currentUserName,
     currentUserAvatar,
     currentUserDept,
     notifications,
-    markNotificationsAsRead
+    markNotificationsAsRead,
+    logout
   } = useResolve();
   
   const navigate = useNavigate();
   const [showNotifications, setShowNotifications] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
-  const [showRoleSwitcher, setShowRoleSwitcher] = useState(false);
 
   // Filter notifications for active role
   const activeNotifications = notifications.filter(n => n.role === currentUserRole);
   const unreadCount = activeNotifications.filter(n => !n.read).length;
 
-  const handleRoleChange = (role: UserRole) => {
-    setCurrentUserRole(role);
-    setShowRoleSwitcher(false);
-    
-    // Redirect based on role
-    if (role === 'Employee') navigate('/employee');
-    else if (role === 'Manager') navigate('/manager');
-    else if (role === 'CTO') navigate('/cto');
-    else if (role === 'COO') navigate('/coo');
-    else if (role === 'CEO') navigate('/ceo');
-  };
-
   const handleMarkAllRead = () => {
     markNotificationsAsRead(currentUserRole);
   };
-
-  const rolesList: UserRole[] = ['Employee', 'Manager', 'CTO', 'COO', 'CEO'];
 
   return (
     <header className="h-16 border-b border-slate-200 bg-white px-6 flex items-center justify-between sticky top-0 z-40">
@@ -56,45 +40,12 @@ export const Navbar: React.FC = () => {
 
       {/* Action Items Navbar */}
       <div className="flex items-center gap-4">
-        {/* Hackathon Role Switcher */}
-        <div className="relative">
-          <button
-            onClick={() => setShowRoleSwitcher(!showRoleSwitcher)}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 hover:border-blue-300 text-blue-700 rounded-lg text-xs font-semibold shadow-sm transition-all cursor-pointer"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-blue-600 animate-pulse-soft" />
-            <span>Role: {currentUserRole}</span>
-            <ChevronDown className="w-3 h-3 text-blue-500" />
-          </button>
-          
-          {showRoleSwitcher && (
-            <div className="absolute right-0 mt-2 w-48 bg-white border border-slate-200 rounded-xl shadow-lg py-1.5 z-50">
-              <div className="px-3 py-1 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                Simulate Role
-              </div>
-              {rolesList.map(r => (
-                <button
-                  key={r}
-                  onClick={() => handleRoleChange(r)}
-                  className={`w-full flex items-center justify-between px-3 py-2 text-xs text-left hover:bg-slate-50 transition-all ${
-                    currentUserRole === r ? 'font-semibold text-blue-600 bg-blue-50/50' : 'text-slate-700'
-                  }`}
-                >
-                  <span>{r === 'CTO' ? 'CTO (Technology)' : r === 'COO' ? 'COO (Operations)' : r}</span>
-                  {currentUserRole === r && <Check className="w-3.5 h-3.5 text-blue-600" />}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-
         {/* Notifications Dropdown */}
         <div className="relative">
           <button
             onClick={() => {
               setShowNotifications(!showNotifications);
               setShowProfileMenu(false);
-              setShowRoleSwitcher(false);
             }}
             className="p-2 text-slate-500 hover:bg-slate-50 rounded-lg relative transition-all cursor-pointer"
           >
@@ -144,7 +95,6 @@ export const Navbar: React.FC = () => {
             onClick={() => {
               setShowProfileMenu(!showProfileMenu);
               setShowNotifications(false);
-              setShowRoleSwitcher(false);
             }}
             className="flex items-center gap-2 pl-2 border-l border-slate-200 hover:opacity-90 transition-all text-left cursor-pointer"
           >
@@ -175,6 +125,7 @@ export const Navbar: React.FC = () => {
               <button
                 onClick={() => {
                   setShowProfileMenu(false);
+                  void logout();
                   navigate('/login');
                 }}
                 className="w-full flex items-center gap-2 px-3 py-2 text-xs text-red-600 hover:bg-red-50 text-left transition-all cursor-pointer"

@@ -5,6 +5,7 @@ import { EmployeeModule } from './pages/EmployeeModule';
 import { ManagerModule } from './pages/ManagerModule';
 import { DepartmentHeadModule } from './pages/DepartmentHeadModule';
 import { CEOModule } from './pages/CEOModule';
+import { RequireAuth } from './components/RequireAuth';
 
 function App() {
   return (
@@ -12,11 +13,46 @@ function App() {
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/employee/*" element={<EmployeeModule />} />
-          <Route path="/manager/*" element={<ManagerModule />} />
-          <Route path="/cto/*" element={<DepartmentHeadModule />} />
-          <Route path="/coo/*" element={<DepartmentHeadModule />} />
-          <Route path="/ceo/*" element={<CEOModule />} />
+          <Route
+            path="/employee/*"
+            element={
+              <RequireAuth allowedRoles={['Employee']}>
+                <EmployeeModule />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/manager/*"
+            element={
+              <RequireAuth allowedRoles={['Manager']}>
+                <ManagerModule />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/cto/*"
+            element={
+              <RequireAuth allowedRoles={['CTO']}>
+                <DepartmentHeadModule />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/coo/*"
+            element={
+              <RequireAuth allowedRoles={['COO']}>
+                <DepartmentHeadModule />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/ceo/*"
+            element={
+              <RequireAuth allowedRoles={['CEO']}>
+                <CEOModule />
+              </RequireAuth>
+            }
+          />
           
           {/* Redirect base landing to login */}
           <Route path="/" element={<Navigate to="/login" replace />} />

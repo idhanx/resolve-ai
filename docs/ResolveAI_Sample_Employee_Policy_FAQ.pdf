@@ -1,0 +1,305 @@
+%PDF-1.4
+%ResolveAI
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R 6 0 R 8 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 3260 >>
+stream
+BT
+/F1 9 Tf
+48 750 Td
+14 TL
+(ResolveAI Sample Employee Policy and FAQ) Tj
+T*
+(Version 1.0 | Effective 2026-07-01) Tj
+T*
+(Sample policy content for MVP demonstration. Replace with approved company policy before) Tj
+T*
+(production use.) Tj
+T*
+() Tj
+T*
+(POL-TECH-001 - Technology incident ownership) Tj
+T*
+(Type: Policy | Owner: CTO | Department: Technology) Tj
+T*
+(Policy: Incidents involving software, APIs, databases, networks, deployment pipelines, or) Tj
+T*
+(production systems must be routed to a Technical Manager with CTO oversight. A critical) Tj
+T*
+(outage or repeated deployment blocker requires an incident owner, impact timeline, and root-) Tj
+T*
+(cause review.) Tj
+T*
+(Required action: Assign the Technical Manager within four business hours, preserve logs,) Tj
+T*
+(define containment, and publish a root-cause action plan within two business days.) Tj
+T*
+(Escalation: Escalate to the CTO immediately for production outage, data-loss risk, security) Tj
+T*
+(exposure, or two similar unresolved reports within 30 days.) Tj
+T*
+() Tj
+T*
+(POL-OPS-001 - Operational issue ownership) Tj
+T*
+(Type: Policy | Owner: COO | Department: Operations) Tj
+T*
+(Policy: Issues involving warehouse flow, vendors, logistics, staffing schedules,) Tj
+T*
+(fulfillment, or delivery must be routed to an Operational Manager with COO oversight. The) Tj
+T*
+(manager must quantify backlog, affected staff, customer delay, and workaround cost.) Tj
+T*
+(Required action: Assign the Operational Manager, stabilize the workflow within one business) Tj
+T*
+(day, and record backlog, delay, labor, and vendor impact measures.) Tj
+T*
+(Escalation: Escalate to the COO and CEO when two or more unresolved reports indicate the) Tj
+T*
+(same operational failure.) Tj
+T*
+() Tj
+T*
+(POL-SAFE-001 - Safety, overtime, and wellbeing) Tj
+T*
+(Type: Policy | Owner: COO and CHRO | Department: Operations) Tj
+T*
+(Policy: Reports of unsafe work, excessive overtime, fatigue, injury risk, or repeated short-) Tj
+T*
+(notice shifts are high-priority concerns. Retaliation is prohibited and immediate protective) Tj
+T*
+(measures take precedence over routine investigation.) Tj
+T*
+(Required action: Confirm immediate safety, pause unsafe work where necessary, review) Tj
+T*
+(scheduling records, and provide the employee a protected follow-up channel.) Tj
+T*
+(Escalation: Notify the COO and CHRO immediately for imminent harm, repeated overtime) Tj
+T*
+(concerns, or evidence of retaliation.) Tj
+T*
+() Tj
+T*
+(POL-LEAD-001 - Manager conduct and communication) Tj
+T*
+(Type: Policy | Owner: COO and CHRO | Department: Operations) Tj
+T*
+(Policy: Concerns about manager conduct, humiliation, harassment, retaliation, missing) Tj
+T*
+(performance reviews, or persistent communication failures require a neutral reviewer. The) Tj
+T*
+(subject of a complaint must not control the investigation or employee follow-up.) Tj
+T*
+(Required action: Route to the people-operations manager, preserve relevant messages and) Tj
+T*
+(review records, and set a confidential employee checkpoint.) Tj
+T*
+(Escalation: Notify CHRO for harassment or retaliation signals and the COO when repeated) Tj
+T*
+(leadership concerns affect operational teams.) Tj
+T*
+() Tj
+T*
+(POL-CAREER-001 - Career growth and performance review fairness) Tj
+T*
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 3307 >>
+stream
+BT
+/F1 9 Tf
+48 750 Td
+14 TL
+(Type: Policy | Owner: CHRO | Department: Operations) Tj
+T*
+(Policy: Employees must have access to documented role expectations, review timing, and) Tj
+T*
+(promotion criteria. Delayed reviews or unclear criteria should be corrected with a dated) Tj
+T*
+(review plan and consistent evidence standards.) Tj
+T*
+(Required action: Publish the applicable criteria, assign a review owner, complete overdue) Tj
+T*
+(reviews, and document the employee development plan.) Tj
+T*
+(Escalation: Escalate systemic or repeated fairness concerns to CHRO and the responsible) Tj
+T*
+(executive.) Tj
+T*
+() Tj
+T*
+(POL-COMP-001 - Compensation and payroll accuracy) Tj
+T*
+(Type: Policy | Owner: COO and CHRO | Department: Operations) Tj
+T*
+(Policy: Payroll errors, unexplained deductions, delayed salary, or inconsistent benefit) Tj
+T*
+(administration require protected handling and financial record verification. Sensitive pay) Tj
+T*
+(data must only be shared with authorized reviewers.) Tj
+T*
+(Required action: Verify payroll records, correct confirmed errors in the next available) Tj
+T*
+(cycle, and provide a written calculation to the employee.) Tj
+T*
+(Escalation: Notify CHRO and Finance for repeated payroll errors, wage compliance risk, or) Tj
+T*
+(broad employee impact.) Tj
+T*
+() Tj
+T*
+(POL-ESC-001 - Repeated unresolved issue escalation) Tj
+T*
+(Type: Policy | Owner: CEO | Department: All) Tj
+T*
+(Policy: Two or more unresolved reports in the same category form an escalation cluster. The) Tj
+T*
+(alert must explain the observed failure, likely cause, productivity or financial loss,) Tj
+T*
+(employee and reputation risk, responsible executive, and recommended action.) Tj
+T*
+(Required action: Create an executive alert, name one accountable owner, set a deadline,) Tj
+T*
+(track outcome measures, and require employee verification before closure.) Tj
+T*
+(Escalation: Notify the department executive, CEO, and CHRO. Risk scoring for an MVP) Tj
+T*
+(escalation cluster is calibrated between 85 and 90.) Tj
+T*
+() Tj
+T*
+(POL-RES-001 - Resolution evidence and employee verification) Tj
+T*
+(Type: Policy | Owner: Department Executive | Department: All) Tj
+T*
+(Policy: A complaint is not considered verified only because a manager marks an action) Tj
+T*
+(complete. Closure requires action evidence, completion notes, measurable outcome, and) Tj
+T*
+(employee confirmation of whether the issue improved.) Tj
+T*
+(Required action: Collect proof, request a one-to-five employee outcome score, and reopen or) Tj
+T*
+(review outcomes rated No, Partially, or below four.) Tj
+T*
+(Escalation: Return failed or partial outcomes to the executive review queue and the AI) Tj
+T*
+(relearning queue.) Tj
+T*
+() Tj
+T*
+(POL-ML-001 - Human-governed AI relearning) Tj
+T*
+(Type: Policy | Owner: AI Governance Owner | Department: All) Tj
+T*
+(Policy: Low-rated, partial, or failed outcomes must be stored as correction candidates. They) Tj
+T*
+(must not enter retrieval or model training until an authorized reviewer confirms the) Tj
+T*
+(corrected category, route, and expected action. Approved examples may be retrieved as) Tj
+T*
+(validated learning cases.) Tj
+T*
+(Required action: Place the outcome in Needs Review, record the correction, approve or reject) Tj
+T*
+(it, and audit the decision before future retrieval.) Tj
+T*
+ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 1664 >>
+stream
+BT
+/F1 9 Tf
+48 750 Td
+14 TL
+(Escalation: Escalate repeated AI routing faults or unsafe recommendations to the AI) Tj
+T*
+(governance owner.) Tj
+T*
+() Tj
+T*
+(FAQ-001 - How are confidence scores interpreted?) Tj
+T*
+(Type: Faq | Owner: AI Governance Owner | Department: All) Tj
+T*
+(Policy: The displayed value is routing and analysis confidence, not a guarantee that a) Tj
+T*
+(complaint is true. For this MVP, concerns have a 90-point confidence floor and feedback has) Tj
+T*
+(an 80-point floor. Policy matches, specific evidence, and validated prior cases may) Tj
+T*
+(strengthen the explanation, while every decision remains reviewable.) Tj
+T*
+(Required action: Show the score with evidence and policy sources; never use the score as the) Tj
+T*
+(sole basis for disciplinary or employment decisions.) Tj
+T*
+(Escalation: Request manual review when the category, route, or recommendation conflicts with) Tj
+T*
+(employee evidence.) Tj
+T*
+() Tj
+T*
+(FAQ-002 - Who receives a technical or operational issue?) Tj
+T*
+(Type: Faq | Owner: CTO or COO | Department: All) Tj
+T*
+(Policy: Technical infrastructure and software issues route to a Technical Manager under the) Tj
+T*
+(CTO. Warehouse, vendor, logistics, staffing, and operational workflow issues route to an) Tj
+T*
+(Operational Manager under the COO. Manager-conduct issues use the people-operations route) Tj
+T*
+(with CHRO visibility when required.) Tj
+T*
+(Required action: Confirm the matched signals and display the manager, executive owner, and) Tj
+T*
+(routing reason in the UI.) Tj
+T*
+(Escalation: Allow executive review when signals cross departments or the employee challenges) Tj
+T*
+(the route.) Tj
+T*
+() Tj
+T*
+ET
+endstream
+endobj
+xref
+0 10
+0000000000 65535 f 
+0000000020 00000 n 
+0000000069 00000 n 
+0000000138 00000 n 
+0000000208 00000 n 
+0000000334 00000 n 
+0000003646 00000 n 
+0000003772 00000 n 
+0000007131 00000 n 
+0000007257 00000 n 
+trailer
+<< /Size 10 /Root 1 0 R >>
+startxref
+8973
+%%EOF

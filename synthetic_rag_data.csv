@@ -1,0 +1,251 @@
+id,employee_id,department,manager,category,description,resolution,status,priority,created_at,resolved_at
+1,1027,Operations,Sarah Johnson,Leadership,Manager humiliates employees during meetings.,Leadership Coaching Program,Resolved,Low,2026-02-27,2026-03-06
+2,1007,Engineering,Sarah Johnson,Leadership,Manager shouts during sprint reviews.,Manager Performance Improvement Plan,Resolved,Medium,2026-03-01,2026-03-20
+3,1109,HR,Michael Brown,Leadership,Manager shouts during sprint reviews.,Manager Performance Improvement Plan,Resolved,High,2026-01-02,2026-01-10
+4,1098,Marketing,Michael Brown,Leadership,Engineering decisions are ignored by management.,Technical Review Board Introduced,Resolved,Low,2026-01-27,2026-02-01
+5,1118,HR,Michael Brown,Leadership,Engineering decisions are ignored by management.,Technical Review Board Introduced,In Progress,Low,2026-01-12,
+6,1018,Operations,Robert Taylor,Leadership,Manager shouts during sprint reviews.,Manager Performance Improvement Plan,Resolved,Low,2026-04-03,2026-04-12
+7,1098,Engineering,Sarah Johnson,Leadership,Manager never appreciates employee work.,Monthly One-on-One Meetings,In Progress,High,2026-01-26,
+8,1091,Operations,Sarah Johnson,Leadership,Manager shouts during sprint reviews.,Manager Performance Improvement Plan,In Progress,Medium,2026-04-05,
+9,1044,Sales,David Wilson,Leadership,Engineering decisions are ignored by management.,Technical Review Board Introduced,In Progress,Medium,2026-06-05,
+10,1015,Operations,Robert Taylor,Leadership,Manager never appreciates employee work.,Monthly One-on-One Meetings,Resolved,Medium,2026-02-26,2026-03-11
+11,1055,Finance,Michael Brown,Leadership,Manager humiliates employees during meetings.,Leadership Coaching Program,In Progress,High,2026-01-17,
+12,1068,Finance,Emily Davis,Leadership,Manager never appreciates employee work.,Monthly One-on-One Meetings,In Progress,Medium,2026-02-06,
+13,1110,HR,Michael Brown,Leadership,Manager never appreciates employee work.,Monthly One-on-One Meetings,In Progress,Critical,2026-05-30,
+14,1013,Technology,Robert Taylor,Leadership,Engineering decisions are ignored by management.,Technical Review Board Introduced,Resolved,Low,2026-05-07,2026-05-12
+15,1017,Marketing,Emily Davis,Leadership,Manager never appreciates employee work.,Monthly One-on-One Meetings,In Progress,Critical,2026-06-02,
+16,1003,Finance,Robert Taylor,Leadership,Manager shouts during sprint reviews.,Manager Performance Improvement Plan,Resolved,Low,2026-03-06,2026-03-26
+17,1112,Operations,David Wilson,Leadership,Engineering decisions are ignored by management.,Technical Review Board Introduced,In Progress,Medium,2026-03-17,
+18,1130,Sales,Michael Brown,Leadership,Manager shouts during sprint reviews.,Manager Performance Improvement Plan,Resolved,Low,2026-05-09,2026-05-17
+19,1040,HR,Robert Taylor,Leadership,Engineering decisions are ignored by management.,Technical Review Board Introduced,In Progress,High,2026-02-20,
+20,1126,Marketing,Robert Taylor,Leadership,Manager never appreciates employee work.,Monthly One-on-One Meetings,Resolved,Low,2026-01-01,2026-01-14
+21,1015,Marketing,Michael Brown,Leadership,Manager humiliates employees during meetings.,Leadership Coaching Program,Submitted,Medium,2026-03-03,
+22,1033,Finance,David Wilson,Leadership,Manager humiliates employees during meetings.,Leadership Coaching Program,Resolved,Critical,2026-05-17,2026-05-24
+23,1139,Marketing,Robert Taylor,Leadership,Manager never appreciates employee work.,Monthly One-on-One Meetings,Resolved,Medium,2026-04-19,2026-04-28
+24,1116,Sales,Michael Brown,Leadership,Engineering decisions are ignored by management.,Technical Review Board Introduced,Resolved,Low,2026-04-23,2026-05-12
+25,1059,Operations,David Wilson,Leadership,Manager never appreciates employee work.,Monthly One-on-One Meetings,Resolved,Medium,2026-05-31,2026-06-20
+26,1009,Sales,David Wilson,Leadership,Manager humiliates employees during meetings.,Leadership Coaching Program,Resolved,High,2026-02-28,2026-03-05
+27,1034,Operations,Emily Davis,Leadership,Manager humiliates employees during meetings.,Leadership Coaching Program,Resolved,Critical,2026-02-24,2026-03-16
+28,1025,Marketing,Emily Davis,Leadership,Manager never appreciates employee work.,Monthly One-on-One Meetings,In Progress,Low,2026-02-18,
+29,1016,Finance,Emily Davis,Leadership,Manager shouts during sprint reviews.,Manager Performance Improvement Plan,Resolved,Critical,2026-01-14,2026-01-20
+30,1049,Engineering,Sarah Johnson,Leadership,Engineering decisions are ignored by management.,Technical Review Board Introduced,In Progress,Critical,2026-02-19,
+31,1114,Operations,Emily Davis,Leadership,Manager never appreciates employee work.,Monthly One-on-One Meetings,Resolved,Low,2026-03-05,2026-03-10
+32,1061,HR,David Wilson,Leadership,Manager humiliates employees during meetings.,Leadership Coaching Program,In Progress,Medium,2026-01-24,
+33,1098,Technology,Emily Davis,Leadership,Manager shouts during sprint reviews.,Manager Performance Improvement Plan,Resolved,Low,2026-01-16,2026-01-24
+34,1143,Marketing,Emily Davis,Leadership,Manager shouts during sprint reviews.,Manager Performance Improvement Plan,Resolved,Critical,2026-03-15,2026-03-31
+35,1016,Technology,David Wilson,Leadership,Manager never appreciates employee work.,Monthly One-on-One Meetings,Resolved,High,2026-05-29,2026-06-18
+36,1015,Finance,Robert Taylor,Leadership,Manager humiliates employees during meetings.,Leadership Coaching Program,Resolved,Low,2026-05-16,2026-05-24
+37,1146,Engineering,Sarah Johnson,Leadership,Manager never appreciates employee work.,Monthly One-on-One Meetings,Resolved,Medium,2026-04-14,2026-04-20
+38,1134,Finance,Robert Taylor,Leadership,Manager humiliates employees during meetings.,Leadership Coaching Program,In Progress,High,2026-05-25,
+39,1102,Sales,Michael Brown,Leadership,Engineering decisions are ignored by management.,Technical Review Board Introduced,Resolved,Medium,2026-03-03,2026-03-14
+40,1145,Marketing,David Wilson,Leadership,Engineering decisions are ignored by management.,Technical Review Board Introduced,Resolved,Low,2026-01-03,2026-01-20
+41,1018,HR,Michael Brown,Leadership,Manager humiliates employees during meetings.,Leadership Coaching Program,Resolved,Medium,2026-02-03,2026-02-17
+42,1136,Finance,Robert Taylor,Leadership,Engineering decisions are ignored by management.,Technical Review Board Introduced,Resolved,Low,2026-06-30,2026-07-12
+43,1030,Engineering,Sarah Johnson,Leadership,Engineering decisions are ignored by management.,Technical Review Board Introduced,Submitted,Low,2026-03-09,
+44,1068,HR,Sarah Johnson,Leadership,Manager never appreciates employee work.,Monthly One-on-One Meetings,Resolved,Critical,2026-03-29,2026-04-07
+45,1109,Marketing,David Wilson,Leadership,Engineering decisions are ignored by management.,Technical Review Board Introduced,Submitted,High,2026-01-24,
+46,1042,Marketing,Sarah Johnson,Leadership,Manager humiliates employees during meetings.,Leadership Coaching Program,Resolved,Critical,2026-06-13,2026-06-24
+47,1140,Engineering,David Wilson,Leadership,Manager shouts during sprint reviews.,Manager Performance Improvement Plan,Resolved,Low,2026-06-26,2026-07-03
+48,1079,Technology,Emily Davis,Leadership,Engineering decisions are ignored by management.,Technical Review Board Introduced,Resolved,High,2026-02-02,2026-02-06
+49,1027,Technology,Sarah Johnson,Leadership,Manager humiliates employees during meetings.,Leadership Coaching Program,Submitted,High,2026-06-20,
+50,1042,Sales,Sarah Johnson,Leadership,Manager shouts during sprint reviews.,Manager Performance Improvement Plan,Submitted,Medium,2026-03-02,
+51,1069,Sales,Michael Brown,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,Resolved,Medium,2026-04-16,2026-04-26
+52,1052,Marketing,David Wilson,Career Development,Career growth discussions never happen.,Quarterly Career Reviews,Resolved,Critical,2026-05-01,2026-05-11
+53,1050,Marketing,Sarah Johnson,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,Resolved,Critical,2026-02-27,2026-03-02
+54,1103,Engineering,Michael Brown,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,Resolved,High,2026-03-31,2026-04-19
+55,1010,Operations,Sarah Johnson,Career Development,Promotion process lacks transparency.,Career Progression Framework,Resolved,Low,2026-05-29,2026-06-09
+56,1030,Sales,Michael Brown,Career Development,Career growth discussions never happen.,Quarterly Career Reviews,Resolved,Critical,2026-04-22,2026-05-11
+57,1138,Engineering,Emily Davis,Career Development,Career growth discussions never happen.,Quarterly Career Reviews,Resolved,Medium,2026-01-01,2026-01-20
+58,1032,Sales,Michael Brown,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,Resolved,High,2026-06-09,2026-06-22
+59,1142,Finance,Michael Brown,Career Development,Career growth discussions never happen.,Quarterly Career Reviews,Resolved,Medium,2026-04-14,2026-04-26
+60,1104,Finance,Sarah Johnson,Career Development,Promotion process lacks transparency.,Career Progression Framework,Resolved,Low,2026-06-07,2026-06-19
+61,1120,Finance,Robert Taylor,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,Resolved,Critical,2026-06-05,2026-06-18
+62,1022,HR,Emily Davis,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,In Progress,High,2026-02-13,
+63,1061,HR,Michael Brown,Career Development,Career growth discussions never happen.,Quarterly Career Reviews,In Progress,High,2026-01-24,
+64,1063,Technology,David Wilson,Career Development,Promotion process lacks transparency.,Career Progression Framework,In Progress,Critical,2026-01-12,
+65,1148,Engineering,Emily Davis,Career Development,Career growth discussions never happen.,Quarterly Career Reviews,In Progress,Medium,2026-04-17,
+66,1038,Finance,Emily Davis,Career Development,Career growth discussions never happen.,Quarterly Career Reviews,In Progress,Low,2026-03-04,
+67,1133,Technology,Sarah Johnson,Career Development,Promotion process lacks transparency.,Career Progression Framework,In Progress,Critical,2026-06-28,
+68,1119,Marketing,David Wilson,Career Development,Promotion process lacks transparency.,Career Progression Framework,Resolved,High,2026-04-27,2026-05-04
+69,1141,Sales,Robert Taylor,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,In Progress,Critical,2026-04-20,
+70,1064,Finance,Emily Davis,Career Development,Promotion process lacks transparency.,Career Progression Framework,In Progress,High,2026-03-08,
+71,1074,Technology,Michael Brown,Career Development,Career growth discussions never happen.,Quarterly Career Reviews,Resolved,Medium,2026-04-23,2026-04-28
+72,1060,HR,David Wilson,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,Resolved,Critical,2026-02-05,2026-02-12
+73,1085,Technology,David Wilson,Career Development,Career growth discussions never happen.,Quarterly Career Reviews,Resolved,Critical,2026-04-17,2026-05-03
+74,1148,Marketing,Emily Davis,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,Resolved,Critical,2026-04-10,2026-04-13
+75,1138,Operations,Michael Brown,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,Resolved,Medium,2026-04-10,2026-04-26
+76,1087,Finance,Emily Davis,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,Resolved,Critical,2026-01-08,2026-01-23
+77,1007,Finance,Sarah Johnson,Career Development,Career growth discussions never happen.,Quarterly Career Reviews,Resolved,Critical,2026-06-09,2026-06-29
+78,1035,Engineering,David Wilson,Career Development,Career growth discussions never happen.,Quarterly Career Reviews,Resolved,Critical,2026-06-14,2026-06-30
+79,1084,Finance,Michael Brown,Career Development,Promotion process lacks transparency.,Career Progression Framework,Resolved,High,2026-02-24,2026-03-13
+80,1121,Marketing,Emily Davis,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,Resolved,Low,2026-03-06,2026-03-11
+81,1011,Operations,Sarah Johnson,Career Development,Career growth discussions never happen.,Quarterly Career Reviews,Resolved,Low,2026-06-16,2026-06-21
+82,1033,Engineering,Robert Taylor,Career Development,Promotion process lacks transparency.,Career Progression Framework,Resolved,Critical,2026-02-09,2026-02-19
+83,1095,Technology,Emily Davis,Career Development,Career growth discussions never happen.,Quarterly Career Reviews,Resolved,Medium,2026-06-29,2026-07-10
+84,1080,Sales,David Wilson,Career Development,Career growth discussions never happen.,Quarterly Career Reviews,In Progress,Low,2026-02-11,
+85,1102,Operations,Robert Taylor,Career Development,Career growth discussions never happen.,Quarterly Career Reviews,Resolved,Medium,2026-06-23,2026-07-08
+86,1031,Marketing,Sarah Johnson,Career Development,Promotion process lacks transparency.,Career Progression Framework,Resolved,Low,2026-01-27,2026-02-08
+87,1088,Sales,Michael Brown,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,Resolved,Low,2026-01-18,2026-02-06
+88,1118,Engineering,Emily Davis,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,In Progress,Medium,2026-04-03,
+89,1124,HR,Michael Brown,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,Resolved,Critical,2026-06-07,2026-06-27
+90,1063,HR,Michael Brown,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,In Progress,Low,2026-03-24,
+91,1098,Technology,Emily Davis,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,Submitted,High,2026-05-26,
+92,1091,Operations,Sarah Johnson,Career Development,Promotion process lacks transparency.,Career Progression Framework,Resolved,High,2026-05-05,2026-05-14
+93,1133,HR,Michael Brown,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,Resolved,Medium,2026-05-23,2026-05-26
+94,1122,Finance,Emily Davis,Career Development,Promotion process lacks transparency.,Career Progression Framework,Resolved,Critical,2026-05-23,2026-06-02
+95,1104,Engineering,Michael Brown,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,In Progress,Medium,2026-02-26,
+96,1136,Operations,Emily Davis,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,In Progress,High,2026-05-22,
+97,1117,HR,Michael Brown,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,Submitted,High,2026-04-01,
+98,1138,Engineering,Sarah Johnson,Career Development,No promotion criteria for senior engineers.,Engineering Career Ladder,Resolved,Medium,2026-03-22,2026-03-28
+99,1073,Finance,Michael Brown,Career Development,Promotion process lacks transparency.,Career Progression Framework,Resolved,Low,2026-05-31,2026-06-19
+100,1137,Operations,Sarah Johnson,Career Development,Promotion process lacks transparency.,Career Progression Framework,Resolved,Medium,2026-03-19,2026-03-22
+101,1126,Engineering,Robert Taylor,Compensation,Bonus policy is unclear.,Published Bonus Guidelines,Resolved,Low,2026-03-16,2026-03-23
+102,1048,Finance,Emily Davis,Compensation,Salary increment delayed.,Compensation Review Committee,Resolved,Low,2026-04-23,2026-05-06
+103,1103,Finance,David Wilson,Compensation,Bonus policy is unclear.,Published Bonus Guidelines,Submitted,Critical,2026-01-17,
+104,1145,Sales,David Wilson,Compensation,Salary increment delayed.,Compensation Review Committee,Resolved,High,2026-02-08,2026-02-15
+105,1058,Engineering,Robert Taylor,Compensation,Salary increment delayed.,Compensation Review Committee,Submitted,Critical,2026-04-17,
+106,1079,Operations,Robert Taylor,Compensation,Bonus policy is unclear.,Published Bonus Guidelines,Submitted,Low,2026-04-20,
+107,1055,Engineering,Sarah Johnson,Compensation,Market salary adjustment pending.,Salary Benchmark Review,Submitted,High,2026-06-10,
+108,1041,Technology,Sarah Johnson,Compensation,Market salary adjustment pending.,Salary Benchmark Review,Resolved,Low,2026-05-22,2026-05-27
+109,1060,HR,Emily Davis,Compensation,Bonus policy is unclear.,Published Bonus Guidelines,Resolved,High,2026-03-16,2026-03-20
+110,1068,Marketing,Emily Davis,Compensation,Market salary adjustment pending.,Salary Benchmark Review,Resolved,Medium,2026-01-19,2026-01-29
+111,1019,Technology,Sarah Johnson,Compensation,Bonus policy is unclear.,Published Bonus Guidelines,Resolved,Low,2026-03-10,2026-03-17
+112,1113,HR,Robert Taylor,Compensation,Salary increment delayed.,Compensation Review Committee,In Progress,Low,2026-03-15,
+113,1129,Sales,Emily Davis,Compensation,Bonus policy is unclear.,Published Bonus Guidelines,In Progress,Critical,2026-03-11,
+114,1007,Engineering,Emily Davis,Compensation,Bonus policy is unclear.,Published Bonus Guidelines,Resolved,Low,2026-03-24,2026-04-04
+115,1006,Marketing,Robert Taylor,Compensation,Salary increment delayed.,Compensation Review Committee,Submitted,High,2026-05-31,
+116,1114,Marketing,Sarah Johnson,Compensation,Market salary adjustment pending.,Salary Benchmark Review,Resolved,High,2026-05-01,2026-05-20
+117,1121,Finance,Emily Davis,Compensation,Salary increment delayed.,Compensation Review Committee,Submitted,High,2026-01-24,
+118,1106,Sales,David Wilson,Compensation,Bonus policy is unclear.,Published Bonus Guidelines,Resolved,Critical,2026-02-11,2026-02-24
+119,1117,Finance,Robert Taylor,Compensation,Bonus policy is unclear.,Published Bonus Guidelines,In Progress,Low,2026-01-10,
+120,1139,Engineering,Emily Davis,Compensation,Bonus policy is unclear.,Published Bonus Guidelines,Resolved,Critical,2026-05-12,2026-05-15
+121,1114,HR,Michael Brown,Compensation,Bonus policy is unclear.,Published Bonus Guidelines,Resolved,Low,2026-06-09,2026-06-27
+122,1032,Technology,Michael Brown,Compensation,Salary increment delayed.,Compensation Review Committee,Resolved,Low,2026-04-23,2026-05-11
+123,1142,Technology,Sarah Johnson,Compensation,Market salary adjustment pending.,Salary Benchmark Review,In Progress,Low,2026-03-21,
+124,1040,Technology,David Wilson,Compensation,Market salary adjustment pending.,Salary Benchmark Review,Resolved,Critical,2026-04-29,2026-05-05
+125,1121,Sales,Michael Brown,Compensation,Market salary adjustment pending.,Salary Benchmark Review,Resolved,Medium,2026-04-17,2026-05-05
+126,1035,Finance,Sarah Johnson,Compensation,Bonus policy is unclear.,Published Bonus Guidelines,Resolved,Low,2026-06-03,2026-06-22
+127,1130,Marketing,Emily Davis,Compensation,Bonus policy is unclear.,Published Bonus Guidelines,In Progress,High,2026-03-29,
+128,1039,Operations,Robert Taylor,Compensation,Salary increment delayed.,Compensation Review Committee,Resolved,Critical,2026-05-29,2026-06-16
+129,1117,Operations,Robert Taylor,Compensation,Market salary adjustment pending.,Salary Benchmark Review,Resolved,High,2026-05-20,2026-06-04
+130,1060,Technology,Robert Taylor,Compensation,Salary increment delayed.,Compensation Review Committee,Submitted,Critical,2026-04-09,
+131,1127,Finance,Emily Davis,Compensation,Salary increment delayed.,Compensation Review Committee,Resolved,Low,2026-04-09,2026-04-16
+132,1026,HR,Michael Brown,Compensation,Salary increment delayed.,Compensation Review Committee,Resolved,Critical,2026-01-26,2026-02-12
+133,1121,Finance,Sarah Johnson,Compensation,Salary increment delayed.,Compensation Review Committee,In Progress,High,2026-01-20,
+134,1137,Finance,David Wilson,Compensation,Bonus policy is unclear.,Published Bonus Guidelines,In Progress,Critical,2026-03-26,
+135,1010,Marketing,Emily Davis,Compensation,Bonus policy is unclear.,Published Bonus Guidelines,In Progress,Low,2026-05-19,
+136,1112,Operations,Sarah Johnson,Compensation,Salary increment delayed.,Compensation Review Committee,In Progress,Low,2026-01-24,
+137,1077,Engineering,Emily Davis,Compensation,Market salary adjustment pending.,Salary Benchmark Review,In Progress,Low,2026-02-12,
+138,1111,Engineering,Michael Brown,Compensation,Salary increment delayed.,Compensation Review Committee,Resolved,Medium,2026-04-02,2026-04-16
+139,1021,HR,Sarah Johnson,Compensation,Salary increment delayed.,Compensation Review Committee,Resolved,Critical,2026-02-13,2026-02-21
+140,1060,Finance,Robert Taylor,Compensation,Market salary adjustment pending.,Salary Benchmark Review,In Progress,Critical,2026-02-06,
+141,1140,Operations,David Wilson,Compensation,Market salary adjustment pending.,Salary Benchmark Review,Resolved,Medium,2026-04-30,2026-05-12
+142,1065,Operations,Robert Taylor,Compensation,Salary increment delayed.,Compensation Review Committee,Resolved,Critical,2026-03-18,2026-04-03
+143,1098,Finance,Emily Davis,Compensation,Bonus policy is unclear.,Published Bonus Guidelines,Resolved,High,2026-01-28,2026-02-07
+144,1071,Sales,Michael Brown,Compensation,Market salary adjustment pending.,Salary Benchmark Review,Resolved,Low,2026-01-06,2026-01-21
+145,1128,Marketing,David Wilson,Compensation,Market salary adjustment pending.,Salary Benchmark Review,Submitted,High,2026-06-05,
+146,1049,Operations,Sarah Johnson,Compensation,Salary increment delayed.,Compensation Review Committee,In Progress,High,2026-06-12,
+147,1025,Marketing,Sarah Johnson,Compensation,Market salary adjustment pending.,Salary Benchmark Review,In Progress,Low,2026-06-10,
+148,1034,Engineering,Robert Taylor,Compensation,Bonus policy is unclear.,Published Bonus Guidelines,In Progress,Low,2026-04-04,
+149,1139,Finance,Sarah Johnson,Compensation,Bonus policy is unclear.,Published Bonus Guidelines,Resolved,High,2026-02-21,2026-02-28
+150,1076,Operations,Sarah Johnson,Compensation,Market salary adjustment pending.,Salary Benchmark Review,Resolved,High,2026-03-07,2026-03-25
+151,1143,Engineering,Sarah Johnson,Developer Experience,Build pipeline takes 45 minutes.,CI/CD Optimization,Resolved,High,2026-02-27,2026-03-14
+152,1032,Engineering,Michael Brown,Developer Experience,Build pipeline takes 45 minutes.,CI/CD Optimization,In Progress,Critical,2026-05-18,
+153,1098,Sales,Michael Brown,Developer Experience,Legacy monolith slows development.,Microservice Migration,In Progress,High,2026-05-30,
+154,1144,Finance,David Wilson,Developer Experience,Build pipeline takes 45 minutes.,CI/CD Optimization,In Progress,High,2026-06-08,
+155,1105,Engineering,Emily Davis,Developer Experience,No automated testing.,QA Automation Pipeline,Resolved,Low,2026-06-29,2026-07-11
+156,1025,Engineering,Michael Brown,Developer Experience,Build pipeline takes 45 minutes.,CI/CD Optimization,Resolved,Medium,2026-05-07,2026-05-13
+157,1108,Finance,Michael Brown,Developer Experience,No automated testing.,QA Automation Pipeline,Resolved,Medium,2026-06-21,2026-07-11
+158,1105,Marketing,Emily Davis,Developer Experience,Legacy monolith slows development.,Microservice Migration,In Progress,High,2026-06-07,
+159,1061,Technology,Emily Davis,Developer Experience,Build pipeline takes 45 minutes.,CI/CD Optimization,In Progress,High,2026-04-24,
+160,1092,Operations,Robert Taylor,Developer Experience,Build pipeline takes 45 minutes.,CI/CD Optimization,Submitted,Low,2026-06-15,
+161,1006,Engineering,Emily Davis,Developer Experience,Legacy monolith slows development.,Microservice Migration,Resolved,Low,2026-01-24,2026-02-02
+162,1142,Technology,Robert Taylor,Developer Experience,Legacy monolith slows development.,Microservice Migration,Resolved,Medium,2026-02-22,2026-02-27
+163,1001,Marketing,Sarah Johnson,Developer Experience,No automated testing.,QA Automation Pipeline,Resolved,High,2026-03-26,2026-04-02
+164,1029,HR,Michael Brown,Developer Experience,Build pipeline takes 45 minutes.,CI/CD Optimization,Submitted,Low,2026-02-14,
+165,1005,Marketing,Sarah Johnson,Developer Experience,Build pipeline takes 45 minutes.,CI/CD Optimization,Resolved,Medium,2026-05-31,2026-06-13
+166,1017,Sales,Emily Davis,Developer Experience,Legacy monolith slows development.,Microservice Migration,Resolved,Critical,2026-05-15,2026-05-21
+167,1116,HR,Robert Taylor,Developer Experience,Legacy monolith slows development.,Microservice Migration,In Progress,Medium,2026-01-28,
+168,1008,Marketing,Robert Taylor,Developer Experience,No automated testing.,QA Automation Pipeline,Resolved,Low,2026-03-19,2026-04-05
+169,1114,Finance,David Wilson,Developer Experience,Legacy monolith slows development.,Microservice Migration,In Progress,Low,2026-05-06,
+170,1150,Technology,David Wilson,Developer Experience,Build pipeline takes 45 minutes.,CI/CD Optimization,Resolved,High,2026-02-02,2026-02-13
+171,1130,HR,Michael Brown,Developer Experience,Legacy monolith slows development.,Microservice Migration,Submitted,Critical,2026-04-27,
+172,1111,Engineering,Robert Taylor,Developer Experience,Build pipeline takes 45 minutes.,CI/CD Optimization,In Progress,Critical,2026-02-25,
+173,1025,Marketing,Emily Davis,Developer Experience,Build pipeline takes 45 minutes.,CI/CD Optimization,Resolved,High,2026-04-13,2026-04-29
+174,1018,Operations,Michael Brown,Developer Experience,Legacy monolith slows development.,Microservice Migration,Resolved,Low,2026-02-09,2026-02-27
+175,1016,Engineering,Michael Brown,Developer Experience,Build pipeline takes 45 minutes.,CI/CD Optimization,Resolved,High,2026-02-03,2026-02-23
+176,1080,Operations,Emily Davis,Developer Experience,No automated testing.,QA Automation Pipeline,Resolved,High,2026-01-14,2026-01-26
+177,1058,Technology,Sarah Johnson,Developer Experience,Build pipeline takes 45 minutes.,CI/CD Optimization,Resolved,Low,2026-06-18,2026-07-06
+178,1147,Operations,David Wilson,Developer Experience,Legacy monolith slows development.,Microservice Migration,In Progress,Medium,2026-03-13,
+179,1143,Marketing,Robert Taylor,Developer Experience,Legacy monolith slows development.,Microservice Migration,In Progress,Low,2026-06-07,
+180,1047,Marketing,Michael Brown,Developer Experience,No automated testing.,QA Automation Pipeline,Submitted,High,2026-01-08,
+181,1047,Operations,Michael Brown,Developer Experience,No automated testing.,QA Automation Pipeline,In Progress,Medium,2026-01-02,
+182,1008,Engineering,Sarah Johnson,Developer Experience,No automated testing.,QA Automation Pipeline,In Progress,Low,2026-06-12,
+183,1041,Finance,Emily Davis,Developer Experience,No automated testing.,QA Automation Pipeline,Resolved,High,2026-04-27,2026-05-10
+184,1022,Marketing,Robert Taylor,Developer Experience,Legacy monolith slows development.,Microservice Migration,In Progress,Low,2026-06-02,
+185,1070,HR,David Wilson,Developer Experience,Build pipeline takes 45 minutes.,CI/CD Optimization,Resolved,Critical,2026-06-22,2026-06-27
+186,1056,HR,Emily Davis,Developer Experience,No automated testing.,QA Automation Pipeline,Resolved,Low,2026-04-17,2026-04-28
+187,1079,Operations,Robert Taylor,Developer Experience,Legacy monolith slows development.,Microservice Migration,Resolved,Low,2026-05-05,2026-05-24
+188,1078,HR,David Wilson,Developer Experience,Build pipeline takes 45 minutes.,CI/CD Optimization,Resolved,Medium,2026-01-02,2026-01-11
+189,1002,Operations,Michael Brown,Developer Experience,Build pipeline takes 45 minutes.,CI/CD Optimization,In Progress,Critical,2026-01-31,
+190,1129,Technology,Emily Davis,Developer Experience,No automated testing.,QA Automation Pipeline,Resolved,High,2026-05-17,2026-05-27
+191,1118,Sales,David Wilson,Developer Experience,Build pipeline takes 45 minutes.,CI/CD Optimization,Resolved,Low,2026-04-22,2026-04-25
+192,1075,HR,Emily Davis,Developer Experience,Legacy monolith slows development.,Microservice Migration,Resolved,Low,2026-06-13,2026-06-29
+193,1093,Operations,Sarah Johnson,Developer Experience,Legacy monolith slows development.,Microservice Migration,Resolved,Low,2026-06-08,2026-06-25
+194,1103,Technology,Emily Davis,Developer Experience,Legacy monolith slows development.,Microservice Migration,In Progress,Low,2026-05-31,
+195,1086,Sales,Michael Brown,Developer Experience,Legacy monolith slows development.,Microservice Migration,Submitted,Medium,2026-02-26,
+196,1090,Engineering,Robert Taylor,Developer Experience,Build pipeline takes 45 minutes.,CI/CD Optimization,Resolved,High,2026-05-11,2026-05-20
+197,1027,Sales,Sarah Johnson,Developer Experience,No automated testing.,QA Automation Pipeline,Submitted,Medium,2026-03-02,
+198,1046,HR,Sarah Johnson,Developer Experience,Legacy monolith slows development.,Microservice Migration,Resolved,Critical,2026-06-17,2026-06-22
+199,1145,Marketing,Robert Taylor,Developer Experience,Legacy monolith slows development.,Microservice Migration,In Progress,High,2026-04-25,
+200,1078,Finance,David Wilson,Developer Experience,No automated testing.,QA Automation Pipeline,Resolved,High,2026-05-01,2026-05-18
+201,1116,HR,David Wilson,Work Environment,Meeting rooms unavailable.,Workspace Expansion,Resolved,Low,2026-03-21,2026-04-07
+202,1130,Operations,David Wilson,Work Environment,Office AC not working.,Facilities Maintenance,Resolved,Critical,2026-06-15,2026-06-20
+203,1083,Marketing,David Wilson,Work Environment,Poor ergonomic chairs.,Workspace Upgrade,Resolved,Critical,2026-04-26,2026-05-05
+204,1022,Engineering,Emily Davis,Work Environment,Meeting rooms unavailable.,Workspace Expansion,Resolved,Medium,2026-01-27,2026-02-09
+205,1041,Finance,Emily Davis,Work Environment,Office AC not working.,Facilities Maintenance,Resolved,High,2026-05-15,2026-06-03
+206,1014,Finance,Emily Davis,Work Environment,Poor ergonomic chairs.,Workspace Upgrade,Submitted,High,2026-03-28,
+207,1039,HR,Emily Davis,Work Environment,Office AC not working.,Facilities Maintenance,Resolved,High,2026-03-14,2026-03-25
+208,1034,Technology,Michael Brown,Work Environment,Office AC not working.,Facilities Maintenance,Resolved,Low,2026-03-21,2026-04-05
+209,1024,Sales,Michael Brown,Work Environment,Poor ergonomic chairs.,Workspace Upgrade,Resolved,Critical,2026-02-02,2026-02-21
+210,1088,Operations,Michael Brown,Work Environment,Meeting rooms unavailable.,Workspace Expansion,Resolved,Critical,2026-02-16,2026-02-25
+211,1026,Technology,Sarah Johnson,Work Environment,Office AC not working.,Facilities Maintenance,Resolved,Low,2026-01-20,2026-02-01
+212,1040,Marketing,Robert Taylor,Work Environment,Meeting rooms unavailable.,Workspace Expansion,Resolved,Medium,2026-02-03,2026-02-18
+213,1113,Marketing,Robert Taylor,Work Environment,Office AC not working.,Facilities Maintenance,In Progress,Low,2026-02-12,
+214,1115,Sales,Sarah Johnson,Work Environment,Poor ergonomic chairs.,Workspace Upgrade,Resolved,Medium,2026-04-24,2026-05-06
+215,1147,Marketing,Emily Davis,Work Environment,Meeting rooms unavailable.,Workspace Expansion,Resolved,Critical,2026-02-19,2026-03-05
+216,1136,Marketing,Emily Davis,Work Environment,Poor ergonomic chairs.,Workspace Upgrade,In Progress,Critical,2026-05-09,
+217,1065,Marketing,Robert Taylor,Work Environment,Office AC not working.,Facilities Maintenance,In Progress,Low,2026-02-05,
+218,1032,Operations,Robert Taylor,Work Environment,Meeting rooms unavailable.,Workspace Expansion,Resolved,High,2026-01-27,2026-02-15
+219,1038,Operations,Emily Davis,Work Environment,Office AC not working.,Facilities Maintenance,In Progress,Critical,2026-05-12,
+220,1007,Technology,Emily Davis,Work Environment,Office AC not working.,Facilities Maintenance,Submitted,Critical,2026-03-31,
+221,1096,Operations,Sarah Johnson,Work Environment,Office AC not working.,Facilities Maintenance,Resolved,Medium,2026-04-09,2026-04-14
+222,1010,Engineering,Michael Brown,Work Environment,Office AC not working.,Facilities Maintenance,Resolved,High,2026-02-07,2026-02-14
+223,1002,Technology,Emily Davis,Work Environment,Poor ergonomic chairs.,Workspace Upgrade,In Progress,Low,2026-04-25,
+224,1109,Marketing,Sarah Johnson,Work Environment,Office AC not working.,Facilities Maintenance,Resolved,Low,2026-05-21,2026-06-09
+225,1118,Engineering,David Wilson,Work Environment,Poor ergonomic chairs.,Workspace Upgrade,Resolved,Low,2026-03-03,2026-03-19
+226,1005,Finance,Robert Taylor,Work Environment,Office AC not working.,Facilities Maintenance,In Progress,Medium,2026-05-18,
+227,1062,Finance,David Wilson,Work Environment,Meeting rooms unavailable.,Workspace Expansion,Resolved,Critical,2026-06-07,2026-06-21
+228,1018,Engineering,Robert Taylor,Work Environment,Office AC not working.,Facilities Maintenance,In Progress,Low,2026-04-03,
+229,1065,Engineering,Emily Davis,Work Environment,Poor ergonomic chairs.,Workspace Upgrade,Submitted,Low,2026-04-06,
+230,1027,Operations,Sarah Johnson,Work Environment,Poor ergonomic chairs.,Workspace Upgrade,In Progress,High,2026-06-18,
+231,1119,HR,Michael Brown,Work Environment,Office AC not working.,Facilities Maintenance,Resolved,Critical,2026-06-14,2026-06-22
+232,1076,Technology,David Wilson,Work Environment,Meeting rooms unavailable.,Workspace Expansion,Resolved,Medium,2026-04-28,2026-05-02
+233,1132,Engineering,Michael Brown,Work Environment,Office AC not working.,Facilities Maintenance,In Progress,Critical,2026-03-21,
+234,1013,Engineering,Sarah Johnson,Work Environment,Meeting rooms unavailable.,Workspace Expansion,Resolved,High,2026-03-15,2026-03-29
+235,1099,Operations,Emily Davis,Work Environment,Poor ergonomic chairs.,Workspace Upgrade,Resolved,High,2026-04-13,2026-04-30
+236,1022,Finance,Michael Brown,Work Environment,Office AC not working.,Facilities Maintenance,Resolved,Critical,2026-05-13,2026-05-24
+237,1083,Marketing,Sarah Johnson,Work Environment,Office AC not working.,Facilities Maintenance,Resolved,Low,2026-05-20,2026-06-01
+238,1043,Operations,Michael Brown,Work Environment,Office AC not working.,Facilities Maintenance,Resolved,Critical,2026-04-25,2026-05-11
+239,1071,Sales,Michael Brown,Work Environment,Poor ergonomic chairs.,Workspace Upgrade,Resolved,Low,2026-06-07,2026-06-23
+240,1041,Finance,Michael Brown,Work Environment,Office AC not working.,Facilities Maintenance,In Progress,Low,2026-05-12,
+241,1033,Sales,Emily Davis,Work Environment,Office AC not working.,Facilities Maintenance,In Progress,Low,2026-01-09,
+242,1146,Operations,Michael Brown,Work Environment,Office AC not working.,Facilities Maintenance,In Progress,Low,2026-04-09,
+243,1020,Finance,Michael Brown,Work Environment,Meeting rooms unavailable.,Workspace Expansion,Resolved,Medium,2026-04-06,2026-04-23
+244,1007,Operations,Michael Brown,Work Environment,Meeting rooms unavailable.,Workspace Expansion,Resolved,Medium,2026-03-05,2026-03-11
+245,1115,HR,David Wilson,Work Environment,Poor ergonomic chairs.,Workspace Upgrade,Resolved,Medium,2026-03-09,2026-03-20
+246,1019,Finance,Sarah Johnson,Work Environment,Meeting rooms unavailable.,Workspace Expansion,Resolved,Critical,2026-02-01,2026-02-08
+247,1082,Finance,David Wilson,Work Environment,Office AC not working.,Facilities Maintenance,Submitted,High,2026-06-24,
+248,1045,HR,Michael Brown,Work Environment,Meeting rooms unavailable.,Workspace Expansion,Resolved,High,2026-03-18,2026-03-26
+249,1007,Technology,Sarah Johnson,Work Environment,Meeting rooms unavailable.,Workspace Expansion,Resolved,High,2026-03-02,2026-03-20
+250,1017,Finance,Robert Taylor,Work Environment,Meeting rooms unavailable.,Workspace Expansion,Resolved,High,2026-02-03,2026-02-08

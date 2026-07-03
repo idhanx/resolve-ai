@@ -29,7 +29,7 @@ interface SidebarItem {
 }
 
 export const Sidebar: React.FC = () => {
-  const { currentUserRole, notifications } = useResolve();
+  const { currentUserRole, currentUserDept, notifications, logout } = useResolve();
   const navigate = useNavigate();
 
   // Get unread notification counts to show in sidebar badges
@@ -103,7 +103,7 @@ export const Sidebar: React.FC = () => {
           {currentUserRole === 'CTO' && 'Technology Division'}
           {currentUserRole === 'COO' && 'Operations Division'}
           {currentUserRole === 'CEO' && 'Enterprise Overview'}
-          {currentUserRole === 'Manager' && 'Team Supervisor'}
+          {currentUserRole === 'Manager' && `${currentUserDept} Supervisor`}
           {currentUserRole === 'Employee' && 'Individual Contributor'}
         </div>
       </div>
@@ -138,7 +138,10 @@ export const Sidebar: React.FC = () => {
       {/* Sidebar Footer */}
       <div className="p-4 border-t border-slate-800">
         <button
-          onClick={() => navigate('/login')}
+          onClick={() => {
+            void logout();
+            navigate('/login');
+          }}
           className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-slate-400 hover:bg-red-950/20 hover:text-red-400 transition-all cursor-pointer"
         >
           <LogOut className="w-4 h-4 text-slate-400" />

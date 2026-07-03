@@ -1,0 +1,142 @@
+{
+  "document": {
+    "title": "ResolveAI Sample Employee Policy and FAQ",
+    "version": "1.0",
+    "effective_date": "2026-07-01",
+    "disclaimer": "Sample policy content for MVP demonstration. Replace with approved company policy before production use."
+  },
+  "entries": [
+    {
+      "id": "POL-TECH-001",
+      "type": "policy",
+      "title": "Technology incident ownership",
+      "category": "Developer Experience & Infrastructure",
+      "department": "Technology",
+      "owner": "CTO",
+      "keywords": ["api", "database", "deployment", "network", "server", "software", "staging", "system outage"],
+      "content": "Incidents involving software, APIs, databases, networks, deployment pipelines, or production systems must be routed to a Technical Manager with CTO oversight. A critical outage or repeated deployment blocker requires an incident owner, impact timeline, and root-cause review.",
+      "action": "Assign the Technical Manager within four business hours, preserve logs, define containment, and publish a root-cause action plan within two business days.",
+      "escalation": "Escalate to the CTO immediately for production outage, data-loss risk, security exposure, or two similar unresolved reports within 30 days."
+    },
+    {
+      "id": "POL-OPS-001",
+      "type": "policy",
+      "title": "Operational issue ownership",
+      "category": "Operational Efficiency",
+      "department": "Operations",
+      "owner": "COO",
+      "keywords": ["delivery", "fulfillment", "logistics", "shift", "supplier", "vendor", "warehouse", "workflow"],
+      "content": "Issues involving warehouse flow, vendors, logistics, staffing schedules, fulfillment, or delivery must be routed to an Operational Manager with COO oversight. The manager must quantify backlog, affected staff, customer delay, and workaround cost.",
+      "action": "Assign the Operational Manager, stabilize the workflow within one business day, and record backlog, delay, labor, and vendor impact measures.",
+      "escalation": "Escalate to the COO and CEO when two or more unresolved reports indicate the same operational failure."
+    },
+    {
+      "id": "POL-SAFE-001",
+      "type": "policy",
+      "title": "Safety, overtime, and wellbeing",
+      "category": "Work Environment & Safety",
+      "department": "Operations",
+      "owner": "COO and CHRO",
+      "keywords": ["burnout", "hazard", "injury", "overtime", "safety", "shift", "wellbeing"],
+      "content": "Reports of unsafe work, excessive overtime, fatigue, injury risk, or repeated short-notice shifts are high-priority concerns. Retaliation is prohibited and immediate protective measures take precedence over routine investigation.",
+      "action": "Confirm immediate safety, pause unsafe work where necessary, review scheduling records, and provide the employee a protected follow-up channel.",
+      "escalation": "Notify the COO and CHRO immediately for imminent harm, repeated overtime concerns, or evidence of retaliation."
+    },
+    {
+      "id": "POL-LEAD-001",
+      "type": "policy",
+      "title": "Manager conduct and communication",
+      "category": "Leadership & Management",
+      "department": "Operations",
+      "owner": "COO and CHRO",
+      "keywords": ["communication", "harassment", "humiliate", "manager", "retaliation", "shout", "review"],
+      "content": "Concerns about manager conduct, humiliation, harassment, retaliation, missing performance reviews, or persistent communication failures require a neutral reviewer. The subject of a complaint must not control the investigation or employee follow-up.",
+      "action": "Route to the people-operations manager, preserve relevant messages and review records, and set a confidential employee checkpoint.",
+      "escalation": "Notify CHRO for harassment or retaliation signals and the COO when repeated leadership concerns affect operational teams."
+    },
+    {
+      "id": "POL-CAREER-001",
+      "type": "policy",
+      "title": "Career growth and performance review fairness",
+      "category": "Career Development & Growth",
+      "department": "Operations",
+      "owner": "CHRO",
+      "keywords": ["career", "growth", "performance review", "promotion", "training", "criteria"],
+      "content": "Employees must have access to documented role expectations, review timing, and promotion criteria. Delayed reviews or unclear criteria should be corrected with a dated review plan and consistent evidence standards.",
+      "action": "Publish the applicable criteria, assign a review owner, complete overdue reviews, and document the employee development plan.",
+      "escalation": "Escalate systemic or repeated fairness concerns to CHRO and the responsible executive."
+    },
+    {
+      "id": "POL-COMP-001",
+      "type": "policy",
+      "title": "Compensation and payroll accuracy",
+      "category": "Compensation & Benefits",
+      "department": "Operations",
+      "owner": "COO and CHRO",
+      "keywords": ["benefits", "compensation", "deduction", "pay", "payroll", "salary", "wage"],
+      "content": "Payroll errors, unexplained deductions, delayed salary, or inconsistent benefit administration require protected handling and financial record verification. Sensitive pay data must only be shared with authorized reviewers.",
+      "action": "Verify payroll records, correct confirmed errors in the next available cycle, and provide a written calculation to the employee.",
+      "escalation": "Notify CHRO and Finance for repeated payroll errors, wage compliance risk, or broad employee impact."
+    },
+    {
+      "id": "POL-ESC-001",
+      "type": "policy",
+      "title": "Repeated unresolved issue escalation",
+      "category": "Enterprise Risk",
+      "department": "All",
+      "owner": "CEO",
+      "keywords": ["many employees", "not resolved", "recurring", "repeat", "same issue", "unresolved"],
+      "content": "Two or more unresolved reports in the same category form an escalation cluster. The alert must explain the observed failure, likely cause, productivity or financial loss, employee and reputation risk, responsible executive, and recommended action.",
+      "action": "Create an executive alert, name one accountable owner, set a deadline, track outcome measures, and require employee verification before closure.",
+      "escalation": "Notify the department executive, CEO, and CHRO. Risk scoring for an MVP escalation cluster is calibrated between 85 and 90."
+    },
+    {
+      "id": "POL-RES-001",
+      "type": "policy",
+      "title": "Resolution evidence and employee verification",
+      "category": "Resolution Governance",
+      "department": "All",
+      "owner": "Department Executive",
+      "keywords": ["action plan", "closed", "evidence", "proof", "resolution", "verify", "verification"],
+      "content": "A complaint is not considered verified only because a manager marks an action complete. Closure requires action evidence, completion notes, measurable outcome, and employee confirmation of whether the issue improved.",
+      "action": "Collect proof, request a one-to-five employee outcome score, and reopen or review outcomes rated No, Partially, or below four.",
+      "escalation": "Return failed or partial outcomes to the executive review queue and the AI relearning queue."
+    },
+    {
+      "id": "POL-ML-001",
+      "type": "policy",
+      "title": "Human-governed AI relearning",
+      "category": "AI Governance",
+      "department": "All",
+      "owner": "AI Governance Owner",
+      "keywords": ["ai error", "bad recommendation", "correction", "feedback", "model fault", "relearn", "wrong category", "wrong manager"],
+      "content": "Low-rated, partial, or failed outcomes must be stored as correction candidates. They must not enter retrieval or model training until an authorized reviewer confirms the corrected category, route, and expected action. Approved examples may be retrieved as validated learning cases.",
+      "action": "Place the outcome in Needs Review, record the correction, approve or reject it, and audit the decision before future retrieval.",
+      "escalation": "Escalate repeated AI routing faults or unsafe recommendations to the AI governance owner."
+    },
+    {
+      "id": "FAQ-001",
+      "type": "faq",
+      "title": "How are confidence scores interpreted?",
+      "category": "AI Governance",
+      "department": "All",
+      "owner": "AI Governance Owner",
+      "keywords": ["accuracy", "confidence", "feedback score", "score"],
+      "content": "The displayed value is routing and analysis confidence, not a guarantee that a complaint is true. For this MVP, concerns have a 90-point confidence floor and feedback has an 80-point floor. Policy matches, specific evidence, and validated prior cases may strengthen the explanation, while every decision remains reviewable.",
+      "action": "Show the score with evidence and policy sources; never use the score as the sole basis for disciplinary or employment decisions.",
+      "escalation": "Request manual review when the category, route, or recommendation conflicts with employee evidence."
+    },
+    {
+      "id": "FAQ-002",
+      "type": "faq",
+      "title": "Who receives a technical or operational issue?",
+      "category": "Routing",
+      "department": "All",
+      "owner": "CTO or COO",
+      "keywords": ["assign", "cto", "coo", "manager", "operational", "route", "technical"],
+      "content": "Technical infrastructure and software issues route to a Technical Manager under the CTO. Warehouse, vendor, logistics, staffing, and operational workflow issues route to an Operational Manager under the COO. Manager-conduct issues use the people-operations route with CHRO visibility when required.",
+      "action": "Confirm the matched signals and display the manager, executive owner, and routing reason in the UI.",
+      "escalation": "Allow executive review when signals cross departments or the employee challenges the route."
+    }
+  ]
+}

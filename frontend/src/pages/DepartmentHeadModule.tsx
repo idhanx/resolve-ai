@@ -22,7 +22,6 @@ import {
 import {
   CheckCircle2,
   ChevronRight,
-  Award,
   Users,
   Sparkles,
   AlertCircle,
@@ -756,15 +755,120 @@ const ExecutiveAnalytics: React.FC = () => {
   );
 };
 
-// 6. Action Plans Library
+// 6. Action Plans Library — AI Relearning Review Queue
 const AIActionPlansLibrary: React.FC = () => {
+  const { learningCandidates, approveLearningCandidate, rejectLearningCandidate } = useResolve();
+  const { dept } = useDeptInfo();
+
+  const candidates = learningCandidates.filter(
+    (c) => c.originalDepartment === dept
+  );
+
+  const needsReview = candidates.filter((c) => c.status === 'Needs Review');
+  const reviewed = candidates.filter((c) => c.status !== 'Needs Review');
+
   return (
-    <div className="space-y-6 max-w-6xl text-center py-12">
-      <Award className="w-10 h-10 text-slate-300 mx-auto mb-2 animate-pulse-soft" />
-      <h3 className="font-display font-bold text-slate-800 text-lg">AI Resolution Templates</h3>
-      <p className="text-slate-500 text-xs max-w-sm mx-auto leading-relaxed">
-        Standard templates are embedded directly inside the Submission review workspace panel for instant routing to supervisors.
-      </p>
+    <div className="space-y-6 max-w-6xl">
+      <div>
+        <h2 className="font-display font-bold text-2xl text-slate-900 m-0">AI Risk & Routing Center</h2>
+        <p className="text-slate-500 text-sm mt-1">
+          Review failed employee verifications. Approve to add them as future AI retrieval sources, or reject to exclude.
+        </p>
+      </div>
+
+      {/* Needs Review */}
+      <div className="space-y-3">
+        <div className="flex items-center gap-2">
+          <AlertCircle className="w-4 h-4 text-amber-500" />
+          <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Needs Review ({needsReview.length})</span>
+        </div>
+
+        {needsReview.length === 0 ? (
+          <div className="bg-white border border-slate-200 rounded-2xl p-8 text-center text-slate-400 text-sm">
+            No items pending review. The AI relearning queue is clear.
+          </div>
+        ) : (
+          needsReview.map((candidate) => (
+            <div key={candidate.id} className="bg-white border border-amber-200 rounded-2xl p-5 shadow-sm space-y-4">
+              <div className="flex justify-between items-start">
+                <div className="min-w-0 pr-4">
+                  <h3 className="font-semibold text-slate-800 text-sm truncate">{candidate.title}</h3>
+                  <p className="text-xs text-slate-400 mt-0.5 line-clamp-2">{candidate.description}</p>
+                </div>
+                <span className="px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 text-[10px] font-bold shrink-0">
+                  Needs Review
+                </span>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 text-xs">
+                <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                  <span className="text-[10px] text-slate-400 font-semibold block">Original Category</span>
+                  <span className="font-semibold text-slate-700 mt-0.5 block">{candidate.originalCategory}</span>
+                </div>
+                <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                  <span className="text-[10px] text-slate-400 font-semibold block">Employee Rating</span>
+                  <span className={`font-bold mt-0.5 block ${
+                    candidate.verificationRating === 'No' ? 'text-red-600' :
+                    candidate.verificationRating === 'Partially' ? 'text-amber-600' : 'text-emerald-600'
+                  }`}>
+                    {candidate.verificationRating} — {candidate.verificationScore}/5
+                  </span>
+                </div>
+              </div>
+
+              {candidate.employeeComments && (
+                <div className="p-3 bg-blue-50 rounded-xl border border-blue-100 text-xs text-blue-700">
+                  <span className="font-semibold block mb-0.5">Employee Feedback:</span>
+                  {candidate.employeeComments}
+                </div>
+              )}
+
+              <div className="flex gap-3 pt-2">
+                <button
+                  onClick={() => approveLearningCandidate(candidate.id)}
+                  className="flex-1 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                >
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  Approve — Add to AI Sources
+                </button>
+                <button
+                  onClick={() => rejectLearningCandidate(candidate.id)}
+                  className="flex-1 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold transition-all cursor-pointer flex items-center justify-center gap-1.5"
+                >
+                  <AlertCircle className="w-3.5 h-3.5" />
+                  Reject — Exclude
+                </button>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+
+      {/* Already Reviewed */}
+      {reviewed.length > 0 && (
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <FileCheck className="w-4 h-4 text-slate-400" />
+            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Reviewed ({reviewed.length})</span>
+          </div>
+
+          {reviewed.map((candidate) => (
+            <div key={candidate.id} className="bg-white border border-slate-200 rounded-2xl p-4 flex items-center justify-between">
+              <div className="min-w-0 pr-4">
+                <span className="text-xs font-semibold text-slate-700 truncate block">{candidate.title}</span>
+                <span className="text-[10px] text-slate-400 mt-0.5 block">{candidate.originalCategory}</span>
+              </div>
+              <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold shrink-0 ${
+                candidate.status === 'Approved'
+                  ? 'bg-emerald-100 text-emerald-700'
+                  : 'bg-slate-100 text-slate-500'
+              }`}>
+                {candidate.status}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
